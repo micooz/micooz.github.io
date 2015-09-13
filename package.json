@@ -1,0 +1,31 @@
+{
+  "name": "micooz.github.io",
+  "version": "1.0.0",
+  "description": "My public website which displays my awesome projects on Github",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micooz/micooz.github.io.git"
+  },
+  "keywords": [
+    "Micooz",
+    "Github",
+    "github.io"
+  ],
+  "author": {
+    "name": "Micooz",
+    "email": "micooz@hotmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/micooz/micooz.github.io/issues"
+  },
+  "homepage": "https://github.com/micooz/micooz.github.io#readme",
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "webpack": "^1.12.1"
+  }
+}
