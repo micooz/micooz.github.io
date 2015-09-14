@@ -66,13 +66,13 @@
 	var app = _angular2['default'].module('app', ['ngRoute', 'controllers']);
 
 	app.config(['$routeProvider', function ($routeProvider) {
-		$routeProvider.when('/', {
-			templateUrl: 'partials/home.html',
-			controller: 'HomeController'
-		}).when('/about', {
-			templateUrl: 'partials/about.html',
-			controller: 'AboutController'
-		});
+	  $routeProvider.when('/', {
+	    templateUrl: 'partials/home.html',
+	    controller: 'HomeController'
+	  }).when('/about', {
+	    templateUrl: 'partials/about.html',
+	    controller: 'AboutController'
+	  });
 	}]);
 
 /***/ },
@@ -29795,9 +29795,7 @@
 
 	var controllers = _angular2['default'].module('controllers', []);
 
-	controllers.controller('HomeController', ['$scope', '$http', function ($scope, $http) {
-		$scope.a = 100;
-	}]);
+	controllers.controller('HomeController', ['$scope', '$http', function ($scope, $http) {}]);
 
 /***/ }
 /******/ ]);
