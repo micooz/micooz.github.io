@@ -1,6 +1,6 @@
 # micooz.github.io
 
-Live site: http://micooz.github.io
+Live site: https://micooz.github.io
 
 I'd like to share some interesting experience of `front-end` development with you!
 
@@ -11,6 +11,7 @@ You need:
 * [NodeJS](https://nodejs.org/) (A JavaScript runtime built on Chrome's V8 JavaScript engine)
 
 > NodeJS will help us setup a static server (use [express](http://expressjs.com/)) for local developing.
+> 
 > **NOTE**: `*.github.io` only serves static files (html, css, js ...), so you'd better run a static server for local developing.
 
 # Install & Run
