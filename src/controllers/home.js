@@ -1,7 +1,6 @@
 import angular from 'angular';
-
-let controllers = angular.module('controllers', []);
+import controllers from './controllers';
 
 controllers.controller('HomeController', ['$scope', '$http', ($scope, $http) => {
-
+  $("#portrait").popover({ trigger: "hover" });
 }]);

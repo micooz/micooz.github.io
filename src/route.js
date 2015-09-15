@@ -1,6 +1,7 @@
 import angular from 'angular';
 require('angular-route');
 require('./controllers/home.js');
+require('./controllers/about.js');
 
 let app = angular.module('app', ['ngRoute', 'controllers']);
 
