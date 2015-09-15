@@ -47,21 +47,34 @@
 	'use strict';
 
 	__webpack_require__(1);
+	__webpack_require__(2);
 
 /***/ },
 /* 1 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	$('nav a').click(function () {
+	  $('nav a').parent().removeClass('active');
+	  $(this).parent().addClass('active');
+	});
+
+/***/ },
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(3);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	__webpack_require__(4);
-	__webpack_require__(6);
+	__webpack_require__(5);
+	__webpack_require__(7);
+	__webpack_require__(9);
 
 	var app = _angular2['default'].module('app', ['ngRoute', 'controllers']);
 
@@ -76,15 +89,15 @@
 	}]);
 
 /***/ },
-/* 2 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(3);
+	__webpack_require__(4);
 	module.exports = angular;
 
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	/**
@@ -28777,15 +28790,15 @@
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(5);
+	__webpack_require__(6);
 	module.exports = 'ngRoute';
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports) {
 
 	/**
@@ -29782,20 +29795,54 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(3);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var controllers = _angular2['default'].module('controllers', []);
+	var _controllers = __webpack_require__(8);
 
-	controllers.controller('HomeController', ['$scope', '$http', function ($scope, $http) {}]);
+	var _controllers2 = _interopRequireDefault(_controllers);
+
+	_controllers2['default'].controller('HomeController', ['$scope', '$http', function ($scope, $http) {
+	  $("#portrait").popover({ trigger: "hover" });
+	}]);
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	exports['default'] = angular.module('controllers', []);
+	module.exports = exports['default'];
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _angular = __webpack_require__(3);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _controllers = __webpack_require__(8);
+
+	var _controllers2 = _interopRequireDefault(_controllers);
+
+	_controllers2['default'].controller('AboutController', ['$scope', '$http', function ($scope, $http) {}]);
 
 /***/ }
 /******/ ]);
