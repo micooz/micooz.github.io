@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel": "./node_modules/.bin/babel src -d lib --experimental -w",
     "webpack": "./node_modules/.bin/webpack",
-    "start": "node ./lib/_dev.js"
+    "start": "node ./lib/server/http.js"
   },
   "repository": {
     "type": "git",
