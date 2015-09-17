@@ -32,6 +32,12 @@ Finally, run the static server, and then check out http://localhost:3000 :
 
     $ npm start
 
+# A simple Article-Writer
+
+I build up a back-end article writer at `http://localhost:3000/editor`. In the editor, you can write an article, the articles will be saved to `storage/`.
+
+Visitors can get your articles from the folder, and `AngularJS` will render and display them to the visitors at front-end.
+
 # License
 
 see `LICENSE`.
