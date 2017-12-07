@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[How to disable text selection in svg]]></title>
+    <url>%2F2016%2F07%2F26%2Fhow-to-disable-text-selection-in-svg%2F</url>
+    <content type="text"><![CDATA[In sass style: 1234567text &#123; user-select: none; &amp;::selection &#123; background: none; &#125;&#125;]]></content>
+      <tags>
+        <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[link in docker]]></title>
+    <url>%2F2016%2F05%2F12%2Flink-in-docker%2F</url>
+    <content type="text"><![CDATA[–link in docker容器A通过–link选项使用容器B的某个服务，docker-compose.yml 配置如下： A: image: image_a links: - B:B ... B: image: image_b ... 当容器B被重启后，A的link不会被自动更新，要一并重启A才行： $ docker-compose restart B # A doesn&apos;t work $ docker-compose restart A # it works well]]></content>
+      <tags>
+        <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[webpack-dev-server 最佳实践]]></title>
+    <url>%2F2016%2F05%2F10%2Fwebpack-dev-server-best-practice%2F</url>
+    <content type="text"><![CDATA[简述webpack-dev-server 是用express和websocket实现的一套在开发环境下前端自动更新的工具。 webpack-dev-server提供CLI接口，读取传入的webpack.config.js配置文件，根据webpack配置，建立一个静态服务器，供前端加载静态资源，其中有一个关键附加脚本是 webpack-dev-server.js，位于PATH根路径，即 /webpack-dev-server.js，其中存放着websocket客户端。 一般使用方法可以通过下面的命令运行webpack-dev-server： $ node node_modules/.bin/webpack-dev-server --config webpack/dev.config.js --inline --profile --colors --watch --display-error-details --display-cached 参数说明参考：这里 执行后会自动运行webpack进行打包等一系列操作。 在webpack配置文件中只需添加一个 devServer 配置项即可定义webpack-dev-server的行为： 12345678910devServer: &#123; port: 3000, host: 'localhost', historyApiFallback: true, quiet: false, watchOptions: &#123; aggregateTimeout: 300, poll: 1000 &#125;&#125;, 在这个例子中，webpack-dev-server会在本地3000端口上启动一个静态服务器，服务器serve的目录是webpack的必选配置 output.path，这是一个绝对路径。 一些问题？请考虑下面这个问题： 我有一个网站项目，分模块，每个模块是一个node项目，且每个模块可以独立存在（启动，调试，运行），它们有些用到了webpack-dev-server。 再次强调每个模块相互独立，它们之间的耦合方式只有一种：请求代理。 现在假设模块A作为API服务器，监听3000端口；模块B作为应用服务器，要提供资源给浏览器，于是用webpack-dev-server在端口3001的 / 上建立了静态服务器。模块B还要从模块A存取数据，那么必定存在从3001跨域请求到3000的问题，消除这个问题有多种解决办法： 在A上设置 Access-Control-Allow-Origin 为B的域。 在A、B上层建立代理服务器，屏蔽端口限制。 不深入讨论上面的方法，现在假设我们采用方法二解决了跨域请求问题，然后我们再考虑一下接下来的一个问题： 假设存在模块C，和B十分类似，也属于应用服务器；如果B和C存在同名资源，比如 main.js，访问该资源就会引发冲突，因为两个模块都在 / 上建立了静态服务器，而这又符合每个模块可以独立存在的先决条件： // B http://localhost/B/index.html http://localhost/main.js // C http://localhost/C/index.html http://localhost/main.js // 哪个 main.js ? 解决办法看似很明显： // B http://localhost/B/index.html http://localhost/B/main.js // C http://localhost/C/index.html http://localhost/C/main.js // everyone is happy 但这又破坏了每个模块的独立性，我希望单独启动C时，C总能从 / 上获取资源，而不是 /C/... 这么冗余。 最佳实践问题就出在 webpack-dev-server，它适合作为静态资源服务器，而不是开发服务器。因此，我们的开发环境除了需要 webpack-dev-server，还需要专门的开发服务器。 // =&gt; Module B // dev server http://localhost/B/index.html // webpack-dev-server for B http://localhost:3001/... // =&gt; Module C // dev server http://localhost/C/index.html // webpack-dev-server for C http://localhost:3003/... 每个模块从对应的 webpack-dev-server 获取资源，解决了冲突又保留了每个模块的独立性。]]></content>
+      <tags>
+        <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Angular2 如何多次触发子组件的 ngOnInit]]></title>
+    <url>%2F2016%2F03%2F29%2Fangular2-multiple-ngoninit%2F</url>
+    <content type="text"><![CDATA[通常子组件加载后只会执行一次ngOnInit，不利于子组件的自我更新，但设法使子组件从Dom中移除后重建就可以多次触发ngOnInit。 1&lt;person *ngIf="show"&gt;&lt;/person&gt; 12345class PersonComponent &#123; ngOnInit() &#123; // triggered if show is available &#125;&#125; 像这种带星号的指令就是Angular2中一种模板语法糖，可以管控组件的生命周期。]]></content>
+      <tags>
+        <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[webpack复习]]></title>
+    <url>%2F2016%2F03%2F22%2Fwebpack-review%2F</url>
+    <content type="text"><![CDATA[使用ProvidePlugin暴露对象到全局： 1234567plugins: [ new webpack.ProvidePlugin(&#123; $: 'jquery', jQuery: 'jquery', 'window.jQuery': 'jquery' &#125;)] 自定义require返回值： 12345678// webpack.config.jsexternals: &#123; 'data': 'data data...'&#125;// use in codevar data = require('data'); // 'data data...' 开启Hot Module Replacement(HMR) 方法一： $ webpack --hot --inline –hot: 添加HotModuleReplacementPlugin –inline: 在生成的js中添加websocket客户端 方法二： 12345678910// webpack.config.jsentry: &#123; 'webpack/hot/dev-server', // 仅仅是为window添加一个listener 'webpack-dev-server/client?http://localhost:8000' // websocket客户端&#125;plugins: [ new webpack.HotModuleReplacementPlugin()]]]></content>
+      <tags>
+        <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[利用索引提升js的执行效率]]></title>
+    <url>%2F2016%2F03%2F17%2Fimprove-js-performance-by-using-index%2F</url>
+    <content type="text"><![CDATA[问题引入： 前段时间，有一个任务是需要频繁在大量的数据集合中快速定位并修改某个元素某个字段的值。 数据结构是数组，元素的结构可能相当复杂且乱序。 问题分析： 假定这个数据集如下： // array dataset [{ name: &apos;name1&apos;, body: { metadata: { header: { id: 1 // unique } } }, ... }] 实际上就是一个查找算法问题，假设要从1000条数据中查找id为1的元素，最SB做法是直接遍历整个数据集： 12345for(let ele of dataset) &#123; if (ele.body.metadata.header.id === 1) &#123; return ele; &#125;&#125; 最坏的情况是O(n)，当然也可以使用其他常见的查找算法减少遍历次数，但如果要频繁查找，同步操作会导致页面直接卡死。 如果有一张哈希表就帮大忙了，不妨先想想下面这个问题： 在数据库里，为什么给一个字段加个索引就可以极大提升查询效率（通常情况）？ 解决方案： 首先理解索引的含义，在js中，数组是线性结构，它的下标可以当成一种索引，通过下标访问元素时间复杂度为O(1)： 12const db = [1, 2, 3, 4, 5, ...];const ele = db[2]; // very quick 对于一个Object，同样的： 1234567const obj = &#123; col1: 1, col2: 2, ...&#125;;const col2 = obj['col2']; // very quickconst col2 = obj.col2; // very quick 再看看最开始的那个问题，如果我们可以： 12const id = 1;const ele = dataset[id]; // very quick 实现这个效果实际上就要建立索引，此时的 dataset 显然已经不能是最原始的数组了。当id不是数字的时候，dataset 也不能是数组，那么Object就理所当然地充当js里的HashMap了（ES6中已经有标准的Map实现）。 编写一个通用的索引创建函数，这个函数可以为一个数组，通过传入的回调函数的返回值创建一个包含所有数据引用的索引对象（Object）： 1234567891011const index = (arr, fn) =&gt; &#123; let indexes = &#123;&#125;; for (let it of arr) &#123; const key = fn(it); if (!indexes[key]) &#123; indexes[key] = &#123;&#125;; &#125; indexes[key] = it; &#125; return indexes;&#125; 函数只需要遍历一次数据集来建立索引。 用法： 1234567891011121314151617const our_index = _index(dataset, ele =&gt; ele.body.metadata.header.id);/*&#123; "1": &#123; name: 'name1', body: &#123; metadata: &#123; header: &#123; id: 1 // unique &#125; &#125; &#125; &#125;, "2": &#123;...&#125;, ...&#125;*/ 有了这个索引 our_index，就可以愉快的以O(1)的复杂度来访问任意元素，取出的元素是引用，于是也可以直接对原存储空间的数据进行操作： 123let ele = our_index[1];// operation on eleele.name = '_' + ele.name; 小结 原生JavaScript不支持Map数据结构，因此可以通过对象来实现；关键在于如何根据需要建立索引，建立索引的字段必须满足唯一性。]]></content>
+      <tags>
+        <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Angular2 事件绑定注意]]></title>
+    <url>%2F2016%2F02%2F23%2Fangular2-events-bind%2F</url>
+    <content type="text"><![CDATA[123&lt;select [(ngModel)]="value" (change)="onSelect(value)"&gt; ...&lt;/select&gt; 123onSelect(value) &#123; // value 还是原来的值，没来得及改变&#125; 解决办法 12345onSelect(value) &#123; setTimeout(() =&gt; &#123; // value 绑定完成后的值 &#125;);&#125; console.log 或者说Chrome DevTools的坑考虑下面的代码： 12345678let obj = &#123;a: []&#125;, n = 100;while(n--) &#123; obj.a.push(n);&#125;console.log(obj); // obj.a[50]: -100obj.a[50] = -100;console.log(obj); // obj.a[50]: -100 浏览器里可以发现两次输出的结果中 a[50] 都是 -100。这一点如果第一次遇到的话还真是匪夷所思。 这里我故意把 a 数组的元素弄得很多，使 DevTools 以 折叠 方式显示： Object {a: Array[100]}Object {a: Array[100]} 看似友好的显示方式，实际上里面有很大的问题。 当我们展开第一个输出时， DevTools 会 及时 读取变量值，由于这是个 引用 类型，实际上它读到的是 obj 的最终值，及 a[50] 是 -100。 如果数组a只有很少的元素，DevTools 不启用智能显示时就不会出现这个问题。 也就是说，console.log 到 DevTools 里的实际上是引用而不是拷贝，展开操作会及时读取变量值。 如果把上面例子的两个输出改成： 1console.log(JSON.stringify(obj)); 结果将和预期的一致。 因此，在浏览器中调试 js 程序应该以 调试器 下断点为主，日志为辅。]]></content>
+      <tags>
+        <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Angular2 @Input 绑定问题]]></title>
+    <url>%2F2016%2F02%2F19%2Fangular2-input-bind%2F</url>
+    <content type="text"><![CDATA[@Component({ template: `&lt;child [value]=&quot;bindValue&quot;&gt;&lt;/child&gt;` }) class HomeComponent { bindValue:string = &apos;hello&apos;; } @Component({ selector: &apos;child&apos;, template: `...` }) class ChildComponent{ @Input() value; ngOnInit(){ // 这里可以取到value的值为&apos;hello&apos; // 当bindValue动态改变时，此函数不会再次调用，需要在ngOnChanges中手动更新 } ngOnChanges(changes) { // this.value = changes[&apos;value&apos;].currentValue; // ... // 但是要小心这个函数会被频繁调用， // 不要做复杂逻辑 } } Array.prototype.map 的坑map回调如果不给出返回值，则默认返回 undefined，MDN文档中似乎并未提到这一点。 var numbers = [1, 4, 9]; var roots = numbers.map(n =&gt; { if (n === 4) { return -1; } }); // [undefined, -1, undefined]]]></content>
+      <tags>
+        <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[浮动元素z-index无效问题]]></title>
+    <url>%2F2016%2F02%2F18%2Ffloat-element-z-index-problem%2F</url>
+    <content type="text"><![CDATA[.view-container { float: right !important; z-index: 999; /* invalid! */ /* position must be set */ position: relative; }]]></content>
+      <tags>
+        <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Object.assign]]></title>
+    <url>%2F2016%2F02%2F17%2Fobject-assign%2F</url>
+    <content type="text"><![CDATA[const _new = Object.assign(target, {...}); 会改变 target 本身，引发问题。 The Object.assign() method is used to copy the values of all enumerable own properties from one or more source objects to a target object. It will return the target object. 有三个解决办法： 逐个拷贝 const _new = {k1: target.k1, k2: target.k2, ...}; ES6 const _new = {...target, ...{...}}; （最佳）把第一个参数设成空对象 const _new = Object.assign({}, target, {...});]]></content>
+      <tags>
+        <tag>tech</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Angular2 - Routing & Navigation]]></title>
+    <url>%2F2016%2F02%2F15%2Fangular2-routing-navigation%2F</url>
+    <content type="text"><![CDATA[@routerCanActive 在加载组件前执行，其回调函数有两种返回方式： @routerCanActive(function() { // return true; 同步 // return Promise.resolve(true); 异步 })]]></content>
+      <tags>
+        <tag>tech</tag>
+      </tags>
+  </entry>
+</search>

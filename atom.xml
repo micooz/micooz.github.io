@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Micooz&#39;s Personal Site</title>
+  
+  <subtitle>Make something different!</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://apporz.com/"/>
+  <updated>2017-12-07T11:52:35.388Z</updated>
+  <id>https://apporz.com/</id>
+  
+  <author>
+    <name>Micooz Lee</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to disable text selection in svg</title>
+    <link href="https://apporz.com/2016/07/26/how-to-disable-text-selection-in-svg/"/>
+    <id>https://apporz.com/2016/07/26/how-to-disable-text-selection-in-svg/</id>
+    <published>2016-07-25T16:00:00.000Z</published>
+    <updated>2017-12-07T11:52:35.388Z</updated>
+    
+    <content type="html"><![CDATA[<p>In sass style:</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">text</span> &#123;</span><br><span class="line">  <span class="attribute">user-select</span>: none;</span><br><span class="line">  </span><br><span class="line">  &amp;::selection &#123;</span><br><span class="line">    <span class="selector-tag">background</span>: <span class="selector-tag">none</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;In sass style:&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://apporz.com/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>link in docker</title>
+    <link href="https://apporz.com/2016/05/12/link-in-docker/"/>
+    <id>https://apporz.com/2016/05/12/link-in-docker/</id>
+    <published>2016-05-11T16:00:00.000Z</published>
+    <updated>2017-12-07T11:52:35.388Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="–link-in-docker"><a href="#–link-in-docker" class="headerlink" title="–link in docker"></a>–link in docker</h1><p>容器A通过–link选项使用容器B的某个服务，<code>docker-compose.yml</code> 配置如下：</p><pre><code>A:  image: image_a  links:    - B:B  ...B:  image: image_b  ...</code></pre><p>当容器B被重启后，A的link不会被自动更新，要一并重启A才行：</p><pre><code>$ docker-compose restart B # A doesn&apos;t work$ docker-compose restart A # it works well</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;–link-in-docker&quot;&gt;&lt;a href=&quot;#–link-in-docker&quot; class=&quot;headerlink&quot; title=&quot;–link in docker&quot;&gt;&lt;/a&gt;–link in docker&lt;/h1&gt;&lt;p&gt;容器A通过–link选项使用容器B的
+      
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://apporz.com/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webpack-dev-server 最佳实践</title>
+    <link href="https://apporz.com/2016/05/10/webpack-dev-server-best-practice/"/>
+    <id>https://apporz.com/2016/05/10/webpack-dev-server-best-practice/</id>
+    <published>2016-05-09T16:00:00.000Z</published>
+    <updated>2017-12-07T11:52:35.389Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p><a href="https://github.com/webpack/webpack-dev-server" target="_blank" rel="noopener">webpack-dev-server</a> 是用express和websocket实现的一套在开发环境下前端自动更新的工具。</p><p>webpack-dev-server提供CLI接口，读取传入的webpack.config.js配置文件，根据webpack配置，建立一个静态服务器，供前端加载静态资源，其中有一个关键附加脚本是 <code>webpack-dev-server.js</code>，位于PATH根路径，即 <code>/webpack-dev-server.js</code>，其中存放着websocket客户端。</p><h2 id="一般使用方法"><a href="#一般使用方法" class="headerlink" title="一般使用方法"></a>一般使用方法</h2><p>可以通过下面的命令运行webpack-dev-server：</p><pre><code>$ node node_modules/.bin/webpack-dev-server --config webpack/dev.config.js --inline --profile --colors --watch --display-error-details --display-cached</code></pre><p>参数说明参考：<a href="http://webpack.github.io/docs/webpack-dev-server.html#webpack-dev-server-cli" target="_blank" rel="noopener">这里</a></p><p>执行后会自动运行webpack进行打包等一系列操作。</p><p>在webpack配置文件中只需添加一个 <code>devServer</code> 配置项即可定义webpack-dev-server的行为：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">  port: <span class="number">3000</span>,</span><br><span class="line">  host: <span class="string">'localhost'</span>,</span><br><span class="line">  historyApiFallback: <span class="literal">true</span>,</span><br><span class="line">  quiet: <span class="literal">false</span>,</span><br><span class="line">  watchOptions: &#123;</span><br><span class="line">    aggregateTimeout: <span class="number">300</span>,</span><br><span class="line">    poll: <span class="number">1000</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure><p>在这个例子中，webpack-dev-server会在本地<strong>3000</strong>端口上启动一个静态服务器，服务器serve的目录是webpack的必选配置 <code>output.path</code>，这是一个绝对路径。</p><h2 id="一些问题？"><a href="#一些问题？" class="headerlink" title="一些问题？"></a>一些问题？</h2><p>请考虑下面这个问题：</p><p>我有一个网站项目，分模块，每个模块是一个node项目，且每个模块可以<strong>独立存在</strong>（启动，调试，运行），它们有些用到了webpack-dev-server。</p><p>再次强调每个模块相互独立，它们之间的耦合方式只有一种：<strong>请求代理</strong>。</p><p>现在假设模块A作为API服务器，监听3000端口；模块B作为应用服务器，要提供资源给浏览器，于是用webpack-dev-server在端口3001的 <code>/</code> 上建立了静态服务器。模块B还要从模块A存取数据，那么必定存在从3001跨域请求到3000的问题，消除这个问题有多种解决办法：</p><ol><li>在A上设置 <code>Access-Control-Allow-Origin</code> 为B的域。</li><li>在A、B上层建立代理服务器，屏蔽端口限制。</li></ol><p>不深入讨论上面的方法，现在假设我们<strong>采用方法二</strong>解决了跨域请求问题，然后我们再考虑一下接下来的一个问题：</p><p>假设存在模块C，和B十分类似，也属于应用服务器；如果B和C存在同名资源，比如 <code>main.js</code>，访问该资源就会引发冲突，因为两个模块都在 <code>/</code> 上建立了静态服务器，而这又符合每个模块可以<strong>独立存在</strong>的先决条件：</p><pre><code>// Bhttp://localhost/B/index.htmlhttp://localhost/main.js// Chttp://localhost/C/index.htmlhttp://localhost/main.js // 哪个 main.js ?</code></pre><p>解决办法看似很明显：</p><pre><code>// Bhttp://localhost/B/index.htmlhttp://localhost/B/main.js// Chttp://localhost/C/index.htmlhttp://localhost/C/main.js // everyone is happy</code></pre><p>但这又破坏了每个模块的独立性，我希望单独启动C时，C总能从 <code>/</code> 上获取资源，而不是 <code>/C/...</code> 这么冗余。</p><h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><p>问题就出在 <code>webpack-dev-server</code>，它适合作为<strong>静态资源服务器</strong>，而不是<strong>开发服务器</strong>。因此，我们的开发环境除了需要 <code>webpack-dev-server</code>，还需要专门的<strong>开发服务器</strong>。</p><pre><code>// =&gt; Module B// dev serverhttp://localhost/B/index.html// webpack-dev-server for Bhttp://localhost:3001/...// =&gt; Module C// dev serverhttp://localhost/C/index.html// webpack-dev-server for Chttp://localhost:3003/...</code></pre><p>每个模块从对应的 <code>webpack-dev-server</code> 获取资源，解决了冲突又保留了每个模块的独立性。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;简述&quot;&gt;&lt;a href=&quot;#简述&quot; class=&quot;headerlink&quot; title=&quot;简述&quot;&gt;&lt;/a&gt;简述&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/webpack/webpack-dev-server&quot; target=&quot;_blank
+      
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://apporz.com/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Angular2 如何多次触发子组件的 ngOnInit</title>
+    <link href="https://apporz.com/2016/03/29/angular2-multiple-ngoninit/"/>
+    <id>https://apporz.com/2016/03/29/angular2-multiple-ngoninit/</id>
+    <published>2016-03-28T16:00:00.000Z</published>
+    <updated>2017-12-07T11:52:35.387Z</updated>
+    
+    <content type="html"><![CDATA[<p>通常子组件加载后只会执行一次<code>ngOnInit</code>，不利于子组件的自我更新，但设法使子组件从Dom中移除后重建就可以多次触发<code>ngOnInit</code>。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">person</span> *<span class="attr">ngIf</span>=<span class="string">"show"</span>&gt;</span><span class="tag">&lt;/<span class="name">person</span>&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonComponent</span> </span>&#123;</span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">    <span class="comment">// triggered if show is available</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>像这种<strong>带星号的指令</strong>就是Angular2中一种模板语法糖，可以管控组件的生命周期。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;通常子组件加载后只会执行一次&lt;code&gt;ngOnInit&lt;/code&gt;，不利于子组件的自我更新，但设法使子组件从Dom中移除后重建就可以多次触发&lt;code&gt;ngOnInit&lt;/code&gt;。&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://apporz.com/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webpack复习</title>
+    <link href="https://apporz.com/2016/03/22/webpack-review/"/>
+    <id>https://apporz.com/2016/03/22/webpack-review/</id>
+    <published>2016-03-21T16:00:00.000Z</published>
+    <updated>2017-12-07T11:52:35.390Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用<code>ProvidePlugin</code>暴露对象到全局：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">  <span class="keyword">new</span> webpack.ProvidePlugin(&#123;</span><br><span class="line">    $: <span class="string">'jquery'</span>,</span><br><span class="line">    jQuery: <span class="string">'jquery'</span>,</span><br><span class="line">    <span class="string">'window.jQuery'</span>: <span class="string">'jquery'</span></span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p>自定义require返回值：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"></span><br><span class="line">externals: &#123;</span><br><span class="line">  <span class="string">'data'</span>: <span class="string">'data data...'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// use in code</span></span><br><span class="line"><span class="keyword">var</span> data = <span class="built_in">require</span>(<span class="string">'data'</span>); <span class="comment">// 'data data...'</span></span><br></pre></td></tr></table></figure><p><strong>开启Hot Module Replacement(HMR)</strong></p><p>方法一：</p><pre><code>$ webpack --hot --inline</code></pre><ul><li>–hot: 添加HotModuleReplacementPlugin</li><li>–inline: 在生成的js中添加websocket客户端</li></ul><p>方法二：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"></span><br><span class="line">entry: &#123;</span><br><span class="line">  <span class="string">'webpack/hot/dev-server'</span>, <span class="comment">// 仅仅是为window添加一个listener</span></span><br><span class="line">  <span class="string">'webpack-dev-server/client?http://localhost:8000'</span> <span class="comment">// websocket客户端</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">plugins: [</span><br><span class="line">  <span class="keyword">new</span> webpack.HotModuleReplacementPlugin()</span><br><span class="line">]</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;使用&lt;code&gt;ProvidePlugin&lt;/code&gt;暴露对象到全局：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/sp
+      
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://apporz.com/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用索引提升js的执行效率</title>
+    <link href="https://apporz.com/2016/03/17/improve-js-performance-by-using-index/"/>
+    <id>https://apporz.com/2016/03/17/improve-js-performance-by-using-index/</id>
+    <published>2016-03-16T16:00:00.000Z</published>
+    <updated>2017-12-07T11:52:35.388Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>问题引入：</strong></p><p>前段时间，有一个任务是需要<strong>频繁</strong>在<strong>大量的数据</strong>集合中<strong>快速定位</strong>并修改某个元素某个字段的值。</p><p>数据结构是<strong>数组</strong>，元素的结构可能相当复杂且<strong>乱序</strong>。</p><p><strong>问题分析：</strong></p><p>假定这个数据集如下：</p><pre><code>// array dataset[{  name: &apos;name1&apos;,  body: {    metadata: {      header: {        id: 1 // unique      }    }  },  ...}]</code></pre><p>实际上就是一个<strong>查找算法</strong>问题，假设要从1000条数据中查找id为1的元素，最SB做法是直接遍历整个数据集：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> ele <span class="keyword">of</span> dataset) &#123;</span><br><span class="line">  <span class="keyword">if</span> (ele.body.metadata.header.id === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> ele;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>最坏的情况是O(n)，当然也可以使用其他常见的查找算法减少遍历次数，但如果要<strong>频繁</strong>查找，同步操作会导致页面直接卡死。</p><p>如果有一张<strong>哈希表</strong>就帮大忙了，不妨先想想下面这个问题：</p><blockquote><p>在数据库里，为什么给一个字段加个索引就可以极大提升查询效率（通常情况）？</p></blockquote><p><strong>解决方案：</strong></p><p>首先理解索引的含义，在js中，数组是线性结构，它的下标可以当成一种索引，通过下标访问元素时间复杂度为O(1)：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> db = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, ...];</span><br><span class="line"><span class="keyword">const</span> ele = db[<span class="number">2</span>]; <span class="comment">// very quick</span></span><br></pre></td></tr></table></figure><p>对于一个Object，同样的：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  col1: <span class="number">1</span>,</span><br><span class="line">  col2: <span class="number">2</span>,</span><br><span class="line">  ...</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> col2 = obj[<span class="string">'col2'</span>]; <span class="comment">// very quick</span></span><br><span class="line"><span class="keyword">const</span> col2 = obj.col2; <span class="comment">// very quick</span></span><br></pre></td></tr></table></figure><p>再看看最开始的那个问题，如果我们可以：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> id = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> ele = dataset[id]; <span class="comment">// very quick</span></span><br></pre></td></tr></table></figure><p>实现这个效果实际上就要<strong>建立索引</strong>，此时的 <code>dataset</code> 显然已经不能是最原始的数组了。当id不是数字的时候，<code>dataset</code> 也不能是数组，<br>那么Object就理所当然地充当js里的HashMap了（ES6中已经有标准的<a href="http://es6.ruanyifeng.com/#docs/set-map#Map" target="_blank" rel="noopener">Map</a>实现）。</p><p>编写一个通用的索引创建函数，这个函数可以为一个数组，通过传入的回调函数的返回值创建一个包含所有数据引用的索引对象（Object）：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> index = <span class="function">(<span class="params">arr, fn</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> indexes = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> it <span class="keyword">of</span> arr) &#123;</span><br><span class="line">    <span class="keyword">const</span> key = fn(it);</span><br><span class="line">    <span class="keyword">if</span> (!indexes[key]) &#123;</span><br><span class="line">      indexes[key] = &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    indexes[key] = it;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> indexes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>函数只需要<strong>遍历一次数据集</strong>来建立索引。</p><p>用法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> our_index = _index(dataset, ele =&gt; ele.body.metadata.header.id);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  "1": &#123;</span></span><br><span class="line"><span class="comment">    name: 'name1',</span></span><br><span class="line"><span class="comment">    body: &#123;</span></span><br><span class="line"><span class="comment">      metadata: &#123;</span></span><br><span class="line"><span class="comment">        header: &#123;</span></span><br><span class="line"><span class="comment">          id: 1 // unique</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">      &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">  &#125;,</span></span><br><span class="line"><span class="comment">  "2": &#123;...&#125;,</span></span><br><span class="line"><span class="comment">  ...</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure><p>有了这个索引 <code>our_index</code>，就可以愉快的以<strong>O(1)</strong>的复杂度来访问任意元素，取出的元素是引用，于是也可以直接对原存储空间的数据进行操作：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ele = our_index[<span class="number">1</span>];</span><br><span class="line"><span class="comment">// operation on ele</span></span><br><span class="line">ele.name = <span class="string">'_'</span> + ele.name;</span><br></pre></td></tr></table></figure><p><strong>小结</strong></p><p>原生JavaScript不支持Map数据结构，因此可以通过对象来实现；关键在于如何根据需要建立索引，建立索引的字段必须满足<strong>唯一性</strong>。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;问题引入：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;前段时间，有一个任务是需要&lt;strong&gt;频繁&lt;/strong&gt;在&lt;strong&gt;大量的数据&lt;/strong&gt;集合中&lt;strong&gt;快速定位&lt;/strong&gt;并修改某个元素某个字段的值。&lt;/p&gt;
+&lt;p&gt;数据结构是&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://apporz.com/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Angular2 事件绑定注意</title>
+    <link href="https://apporz.com/2016/02/23/angular2-events-bind/"/>
+    <id>https://apporz.com/2016/02/23/angular2-events-bind/</id>
+    <published>2016-02-22T16:00:00.000Z</published>
+    <updated>2017-12-07T11:52:35.386Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> [(<span class="attr">ngModel</span>)]=<span class="string">"value"</span> (<span class="attr">change</span>)=<span class="string">"onSelect(value)"</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onSelect(value) &#123;</span><br><span class="line">  <span class="comment">// value 还是原来的值，没来得及改变</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>解决办法</strong></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">onSelect(value) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// value 绑定完成后的值</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h1 id="console-log-或者说Chrome-DevTools的坑"><a href="#console-log-或者说Chrome-DevTools的坑" class="headerlink" title="console.log 或者说Chrome DevTools的坑"></a>console.log 或者说Chrome DevTools的坑</h1><p>考虑下面的代码：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;<span class="attr">a</span>: []&#125;, n = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">while</span>(n--) &#123;</span><br><span class="line">  obj.a.push(n);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj); <span class="comment">// obj.a[50]: -100</span></span><br><span class="line"></span><br><span class="line">obj.a[<span class="number">50</span>] = <span class="number">-100</span>;</span><br><span class="line"><span class="built_in">console</span>.log(obj); <span class="comment">// obj.a[50]: -100</span></span><br></pre></td></tr></table></figure><p>浏览器里可以发现两次输出的结果中 <code>a[50]</code> 都是 <code>-100</code>。这一点如果第一次遇到的话还真是匪夷所思。</p><p>这里我故意把 <code>a</code> 数组的元素弄得很多，使 <code>DevTools</code> 以 <strong>折叠</strong> 方式显示：</p><blockquote><p>Object {a: Array[100]}<br>Object {a: Array[100]}</p></blockquote><p>看似友好的显示方式，实际上里面有很大的问题。</p><p>当我们<strong>展开第一个输出</strong>时， <code>DevTools</code> 会 <strong>及时</strong> 读取变量值，由于这是个 <strong>引用</strong> 类型，实际上它读到的是 <code>obj</code> 的最终值，及 <code>a[50]</code> 是 <code>-100</code>。</p><p>如果数组a只有很少的元素，<code>DevTools</code> 不启用智能显示时就不会出现这个问题。</p><p>也就是说，<code>console.log</code> 到 <code>DevTools</code> 里的实际上<strong>是引用而不是拷贝</strong>，<strong>展开</strong>操作会及时读取变量值。</p><p>如果把上面例子的两个输出改成：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.stringify(obj));</span><br></pre></td></tr></table></figure><p>结果将和预期的一致。</p><p><strong>因此</strong>，在浏览器中调试 <code>js</code> 程序应该以 <code>调试器</code> 下断点为主，日志为辅。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=
+      
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://apporz.com/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Angular2 @Input 绑定问题</title>
+    <link href="https://apporz.com/2016/02/19/angular2-input-bind/"/>
+    <id>https://apporz.com/2016/02/19/angular2-input-bind/</id>
+    <published>2016-02-18T16:00:00.000Z</published>
+    <updated>2017-12-07T11:52:35.386Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>@Component({  template: `&lt;child [value]=&quot;bindValue&quot;&gt;&lt;/child&gt;`})class HomeComponent {  bindValue:string = &apos;hello&apos;;}@Component({  selector: &apos;child&apos;,  template: `...`})class ChildComponent{  @Input() value;  ngOnInit(){    // 这里可以取到value的值为&apos;hello&apos;    // 当bindValue动态改变时，此函数不会再次调用，需要在ngOnChanges中手动更新  }  ngOnChanges(changes) {    // this.value = changes[&apos;value&apos;].currentValue;    // ...    // 但是要小心这个函数会被频繁调用，    // 不要做复杂逻辑  }}</code></pre><h1 id="Array-prototype-map-的坑"><a href="#Array-prototype-map-的坑" class="headerlink" title="Array.prototype.map 的坑"></a>Array.prototype.map 的坑</h1><p>map回调如果不给出返回值，则默认返回 <code>undefined</code>，<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="noopener">MDN文档</a>中似乎并未提到这一点。</p><pre><code>var numbers = [1, 4, 9];var roots = numbers.map(n =&gt; {  if (n === 4) {    return -1;  }});// [undefined, -1, undefined]</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;@Component({
+  template: `&amp;lt;child [value]=&amp;quot;bindValue&amp;quot;&amp;gt;&amp;lt;/child&amp;gt;`
+})
+class HomeComponent {
+  bindValue:string 
+      
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://apporz.com/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浮动元素z-index无效问题</title>
+    <link href="https://apporz.com/2016/02/18/float-element-z-index-problem/"/>
+    <id>https://apporz.com/2016/02/18/float-element-z-index-problem/</id>
+    <published>2016-02-17T16:00:00.000Z</published>
+    <updated>2017-12-07T11:52:35.387Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>.view-container {  float: right !important;  z-index: 999; /* invalid! */  /* position must be set */  position: relative;}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;.view-container {
+  float: right !important;
+  z-index: 999; /* invalid! */
+
+  /* position must be set */
+  position: relative;
+}
+      
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://apporz.com/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Object.assign</title>
+    <link href="https://apporz.com/2016/02/17/object-assign/"/>
+    <id>https://apporz.com/2016/02/17/object-assign/</id>
+    <published>2016-02-16T16:00:00.000Z</published>
+    <updated>2017-12-07T11:52:35.389Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>const _new = Object.assign(target, {...});</code></pre><p>会改变 <code>target</code> 本身，引发问题。</p><blockquote><p>The Object.assign() method is used to copy the values of all enumerable own properties from one or more source objects <strong>to</strong> a target object. It will return the target object.</p></blockquote><p>有三个解决办法：</p><p><strong>逐个拷贝</strong></p><pre><code>const _new = {k1: target.k1, k2: target.k2, ...};</code></pre><p><strong>ES6</strong></p><pre><code>const _new = {...target, ...{...}};</code></pre><p><strong>（最佳）把第一个参数设成空对象</strong></p><pre><code>const _new = Object.assign({}, target, {...});</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code&gt;const _new = Object.assign(target, {...});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会改变 &lt;code&gt;target&lt;/code&gt; 本身，引发问题。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Object.assign
+      
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://apporz.com/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Angular2 - Routing &amp; Navigation</title>
+    <link href="https://apporz.com/2016/02/15/angular2-routing-navigation/"/>
+    <id>https://apporz.com/2016/02/15/angular2-routing-navigation/</id>
+    <published>2016-02-14T16:00:00.000Z</published>
+    <updated>2017-12-07T11:52:35.387Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>@routerCanActive</code> 在加载组件前执行，其回调函数有两种返回方式：</p><pre><code>@routerCanActive(function() {  // return true; 同步  // return Promise.resolve(true); 异步})</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;@routerCanActive&lt;/code&gt; 在加载组件前执行，其回调函数有两种返回方式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@routerCanActive(function() {
+  // return true; 同步
+  // return Promis
+      
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://apporz.com/tags/tech/"/>
+    
+  </entry>
+  
+</feed>
