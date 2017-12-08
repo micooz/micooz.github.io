@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/uploads/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="tech,cpp,net," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Micooz" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="引言笔者机器上安装了两个系统，一个Linux Ubuntu，一个Windows8.1。让人感到郁闷的是，每次从Ubuntu重启进入Windows时，系统时间总是少了8个小时，每次都要用Windows的时间程序进行同步，也就是下面这个东西：  这个东西其实就是一个NTP Client，从Internet上选择一台NTP Server，获取UTC时间，然后设置本地时间。 于是我想自己实现一个这样的程序">
+<meta name="keywords" content="tech,cpp,net">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++使用Boost实现Network Time Protocol(NTP)客户端">
+<meta property="og:url" content="https://apporz.com/2014/10/01/cpp-ntp-client-using-boost/index.html">
+<meta property="og:site_name" content="Micooz">
+<meta property="og:description" content="引言笔者机器上安装了两个系统，一个Linux Ubuntu，一个Windows8.1。让人感到郁闷的是，每次从Ubuntu重启进入Windows时，系统时间总是少了8个小时，每次都要用Windows的时间程序进行同步，也就是下面这个东西：  这个东西其实就是一个NTP Client，从Internet上选择一台NTP Server，获取UTC时间，然后设置本地时间。 于是我想自己实现一个这样的程序">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://apporz.com/2014/10/01/cpp-ntp-client-using-boost/103314_axWa_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/10/01/cpp-ntp-client-using-boost/105506_Pfy8_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/10/01/cpp-ntp-client-using-boost/110611_s2ke_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/10/01/cpp-ntp-client-using-boost/115316_jWZi_580940.png">
+<meta property="og:updated_time" content="2017-12-08T13:17:42.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++使用Boost实现Network Time Protocol(NTP)客户端">
+<meta name="twitter:description" content="引言笔者机器上安装了两个系统，一个Linux Ubuntu，一个Windows8.1。让人感到郁闷的是，每次从Ubuntu重启进入Windows时，系统时间总是少了8个小时，每次都要用Windows的时间程序进行同步，也就是下面这个东西：  这个东西其实就是一个NTP Client，从Internet上选择一台NTP Server，获取UTC时间，然后设置本地时间。 于是我想自己实现一个这样的程序">
+<meta name="twitter:image" content="https://apporz.com/2014/10/01/cpp-ntp-client-using-boost/103314_axWa_580940.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://apporz.com/2014/10/01/cpp-ntp-client-using-boost/"/>
+
+
+
+
+
+  <title>C++使用Boost实现Network Time Protocol(NTP)客户端 | Micooz</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-72182315-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Micooz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Make something different!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://apporz.com/2014/10/01/cpp-ntp-client-using-boost/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Micooz Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/master.portrait.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Micooz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++使用Boost实现Network Time Protocol(NTP)客户端</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-10-01T00:00:00+08:00">
+                2014-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/10/01/cpp-ntp-client-using-boost/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2014/10/01/cpp-ntp-client-using-boost/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>笔者机器上安装了两个系统，一个Linux Ubuntu，一个Windows8.1。让人感到郁闷的是，每次从Ubuntu重启进入Windows时，系统时间总是少了8个小时，每次都要用Windows的时间程序进行同步，也就是下面这个东西：</p>
+<p><img src="103314_axWa_580940.png" alt=""></p>
+<p>这个东西其实就是一个NTP Client，从Internet上选择一台NTP Server，获取UTC时间，然后设置本地时间。</p>
+<p>于是我想自己实现一个这样的程序，先百度一下吧，网上有很多关于NTP的资料和实现代码，大多是单一平台的，不能跨平台</p>
+<p>，下面给几个参考：</p>
+<p><a href="http://blog.csdn.net/loongee/article/details/24271129" target="_blank" rel="noopener">http://blog.csdn.net/loongee/article/details/24271129</a></p>
+<p><a href="http://blog.csdn.net/chexlong/article/details/6963541" target="_blank" rel="noopener">http://blog.csdn.net/chexlong/article/details/6963541</a></p>
+<p><a href="http://www.cnblogs.com/TianFang/archive/2011/12/20/2294603.html" target="_blank" rel="noopener">http://www.cnblogs.com/TianFang/archive/2011/12/20/2294603.html</a></p>
+<p>本文使用boost的Asio来跨平台实现NTP Client.</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ol>
+<li>最新的boost库，本文使用的是1.56.0版本<br>要用到里面的ASIO网络库</li>
+<li>IDE是Visual Studio 2013 with Update3<br>笔者是版本帝</li>
+<li>WireShark也是最新的1.12.1版本<br>用来分析Windows自带的NTP Client</li>
+</ol>
+<h2 id="NTP-Packet分析"><a href="#NTP-Packet分析" class="headerlink" title="NTP Packet分析"></a>NTP Packet分析</h2><p>这里我们分析的正是上图那个程序，点击立即更新，会发送NTP的请求包，下面是Wireshark的抓包结果：</p>
+<p><img src="105506_Pfy8_580940.png" alt=""></p>
+<p>可以得到下面一些信息：</p>
+<ol>
+<li>NTP时间同步分两个过程，一个Request，一个Response</li>
+<li>这里的NTP Server的IP地址是<strong>129.6.15.28</strong></li>
+<li>程序没有进行DNS解析，可能是直接保存了IP地址</li>
+<li>NTP服务的端口号是123，Client也使用了<strong>123端口</strong>，后来发现Client不是一定要使用123端口的</li>
+<li>NTP协议是构建在<strong>UDP传输协议</strong>上的应用协议</li>
+<li>这里使用V3版的NTP协议，目前还有v4</li>
+</ol>
+<p>好了，有了关于NTP协议的一些基本信息，我们再来看看应用层的详细信息：</p>
+<p><strong>Response</strong>包：</p>
+<p><img src="110611_s2ke_580940.png" alt=""></p>
+<p>分了很多字段，关于每个字段的含义请参考上面给出的链接，本文主要讲实现。这里Reference Timestamp就是Request包发送的Timestamp，而Origin,Receive,Transmit都是从Server返回回来的时间，后三个时间都相差非常小，因此方便一点，我们取最后一个Transmit Timestamp作为结果。</p>
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>boost里面相关库的编译可以参考官方的文档，里面有非常简单的例子。</p>
+<h5 id="1-需要的头文件和名字空间"><a href="#1-需要的头文件和名字空间" class="headerlink" title="1. 需要的头文件和名字空间"></a>1. 需要的头文件和名字空间</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"boost/asio.hpp"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"boost/date_time/posix_time/posix_time.hpp"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> boost::posix_time;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> boost::asio::ip;</span><br></pre></td></tr></table></figure>
+<h5 id="2-NtpPacket的构造"><a href="#2-NtpPacket的构造" class="headerlink" title="2. NtpPacket的构造"></a>2. NtpPacket的构造</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NtpPacket</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    NtpPacket() &#123;</span><br><span class="line">        _rep._flags = <span class="number">0xdb</span>;</span><br><span class="line">        <span class="comment">//    11.. ....    Leap Indicator: unknown</span></span><br><span class="line">        <span class="comment">//    ..01 1...    NTP Version 3</span></span><br><span class="line">        <span class="comment">//    .... .011    Mode: client</span></span><br><span class="line">        _rep._pcs = <span class="number">0x00</span>;<span class="comment">//unspecified</span></span><br><span class="line">        _rep._ppt = <span class="number">0x01</span>;</span><br><span class="line">        _rep._pcp = <span class="number">0x01</span>;</span><br><span class="line">        _rep._rdy = <span class="number">0x01000000</span>;<span class="comment">//big-endian</span></span><br><span class="line">        _rep._rdn = <span class="number">0x01000000</span>;</span><br><span class="line">        _rep._rid = <span class="number">0x00000000</span>;</span><br><span class="line">        _rep._ret = <span class="number">0x0</span>;</span><br><span class="line">        _rep._ort = <span class="number">0x0</span>;</span><br><span class="line">        _rep._rct = <span class="number">0x0</span>;</span><br><span class="line">        _rep._trt = <span class="number">0x0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> <span class="built_in">std</span>::ostream&amp; <span class="keyword">operator</span>&lt;&lt;(<span class="built_in">std</span>::ostream&amp; os, <span class="keyword">const</span> NtpPacket&amp; ntpacket) &#123;</span><br><span class="line">        <span class="keyword">return</span> os.write(<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span> *&gt;(&amp;ntpacket._rep), <span class="keyword">sizeof</span>(ntpacket._rep));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> <span class="built_in">std</span>::istream&amp; <span class="keyword">operator</span>&gt;&gt;(<span class="built_in">std</span>::istream&amp; is, NtpPacket&amp; ntpacket) &#123;</span><br><span class="line">        <span class="keyword">return</span> is.read(<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">char</span>*&gt;(&amp;ntpacket._rep), <span class="keyword">sizeof</span>(ntpacket._rep));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(1)</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">NtpHeader</span> &#123;</span></span><br><span class="line">        <span class="keyword">uint8_t</span> _flags;<span class="comment">//Flags</span></span><br><span class="line">        <span class="keyword">uint8_t</span> _pcs;<span class="comment">//Peer Clock Stratum</span></span><br><span class="line">        <span class="keyword">uint8_t</span> _ppt;<span class="comment">//Peer Polling Interval</span></span><br><span class="line">        <span class="keyword">uint8_t</span> _pcp;<span class="comment">//Peer Clock Precision</span></span><br><span class="line">        <span class="keyword">uint32_t</span> _rdy;<span class="comment">//Root Delay</span></span><br><span class="line">        <span class="keyword">uint32_t</span> _rdn;<span class="comment">//Root Dispersion</span></span><br><span class="line">        <span class="keyword">uint32_t</span> _rid;<span class="comment">//Reference ID</span></span><br><span class="line">        <span class="keyword">uint64_t</span> _ret;<span class="comment">//Reference Timestamp</span></span><br><span class="line">        <span class="keyword">uint64_t</span> _ort;<span class="comment">//Origin Timestamp</span></span><br><span class="line">        <span class="keyword">uint64_t</span> _rct;<span class="comment">//Receive Timestamp</span></span><br><span class="line">        <span class="keyword">uint64_t</span> _trt;<span class="comment">//Transmit Timestamp</span></span><br><span class="line">    &#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack()</span></span><br><span class="line">    NtpHeader _rep;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里为了方便存取就没有把struct放到private中，需要注意的是结构体各个字段的顺序和需要进行内存1字节对齐，即使用：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> pack(1)</span></span><br></pre></td></tr></table></figure>
+<p>内存对齐在网络编程中十分重要，他会直接影响Packet的内容，关于内存对齐可以参考：</p>
+<p><a href="http://www.cppblog.com/cc/archive/2006/08/01/10765.html" target="_blank" rel="noopener">http://www.cppblog.com/cc/archive/2006/08/01/10765.html</a></p>
+<p>NTP请求包中最重要的是flags，里面存有版本信息等直接影响协议工作的内容，因此不能搞错了。</p>
+<p>两个operator重载用来方便读写Packet数据。</p>
+<p>再来看看Client类的实现，Client类的主要任务就是发送和接受NTP包，并返回最后那个64bit的Timestamp。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NtpClient</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    NtpClient(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; serverIp)</span><br><span class="line">        :_socket(io), _serverIp(serverIp) &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">time_t</span> getTime() &#123;</span><br><span class="line">        <span class="keyword">if</span> (_socket.is_open()) &#123;</span><br><span class="line">            _socket.shutdown(udp::socket::shutdown_both, _ec);</span><br><span class="line">            <span class="keyword">if</span> (_ec) &#123;</span><br><span class="line">                <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; _ec.message() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">                _socket.close();</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            _socket.close();</span><br><span class="line">        &#125;</span><br><span class="line">        udp::endpoint ep(boost::asio::ip::address_v4::from_string(_serverIp), NTP_PORT);</span><br><span class="line">        NtpPacket request;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">stringstream</span> ss;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> buf;</span><br><span class="line">        ss &lt;&lt; request;</span><br><span class="line">        ss &gt;&gt; buf;</span><br><span class="line">        _socket.open(udp::v4());</span><br><span class="line">        _socket.send_to(boost::asio::buffer(buf), ep);</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">array</span>&lt;<span class="keyword">uint8_t</span>, 128&gt; recv;</span><br><span class="line">        <span class="keyword">size_t</span> len = _socket.receive_from(boost::asio::buffer(recv), ep);</span><br><span class="line">        <span class="keyword">uint8_t</span>* pBytes = recv.data();</span><br><span class="line">        <span class="comment">/****dump hex data</span></span><br><span class="line"><span class="comment">        for (size_t i = 0; i &lt; len; i++) &#123;</span></span><br><span class="line"><span class="comment">        if (i % 16 == 0) &#123;</span></span><br><span class="line"><span class="comment">        std::cout &lt;&lt; std::endl;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        else &#123;</span></span><br><span class="line"><span class="comment">        std::cout &lt;&lt; std::setw(2) &lt;&lt; std::setfill('0')</span></span><br><span class="line"><span class="comment">        &lt;&lt; std::hex &lt;&lt; (uint32_t) pBytes[i];</span></span><br><span class="line"><span class="comment">        std::cout &lt;&lt; ' ';</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        ****/</span></span><br><span class="line">        <span class="keyword">time_t</span> tt;</span><br><span class="line">        <span class="keyword">uint64_t</span> last;</span><br><span class="line">        <span class="keyword">uint32_t</span> seconds;</span><br><span class="line">        <span class="comment">/****get the last 8 bytes(Transmit Timestamp) from received packet.</span></span><br><span class="line"><span class="comment">        std::memcpy(&amp;last, pBytes + len - 8, sizeof(last));</span></span><br><span class="line"><span class="comment">        ****create a NtpPacket*/</span></span><br><span class="line">        NtpPacket resonpse;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">stringstream</span> rss;</span><br><span class="line">        rss.write(<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">const</span> <span class="keyword">char</span>*&gt;(pBytes), len);</span><br><span class="line">        rss &gt;&gt; resonpse;</span><br><span class="line">        last = resonpse._rep._trt;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        reverseByteOrder(last);</span><br><span class="line">        seconds = (last &amp; <span class="number">0x7FFFFFFF00000000</span>) &gt;&gt; <span class="number">32</span>;</span><br><span class="line">        tt = seconds + <span class="number">8</span> * <span class="number">3600</span> * <span class="number">2</span> - <span class="number">61533950</span>;</span><br><span class="line">        <span class="keyword">return</span> tt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">uint16_t</span> NTP_PORT = <span class="number">123</span>;</span><br><span class="line">    udp::socket _socket;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> _serverIp;</span><br><span class="line">    boost::system::error_code _ec;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>注意几个地方：</p>
+<h5 id="1-udp-socket是boost里面使用udp协议的套接字，他的构造需要一个io-service，io-service可以直接在全局区进行声明："><a href="#1-udp-socket是boost里面使用udp协议的套接字，他的构造需要一个io-service，io-service可以直接在全局区进行声明：" class="headerlink" title="1. udp::socket是boost里面使用udp协议的套接字，他的构造需要一个io_service，io_service可以直接在全局区进行声明："></a>1. udp::socket是boost里面使用udp协议的套接字，他的构造需要一个io_service，io_service可以直接在全局区进行声明：</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boost::asio::io_service io;</span><br></pre></td></tr></table></figure>
+<h5 id="2-创建一个endpoint用来表示NTP-Server的地址："><a href="#2-创建一个endpoint用来表示NTP-Server的地址：" class="headerlink" title="2. 创建一个endpoint用来表示NTP Server的地址："></a>2. 创建一个endpoint用来表示NTP Server的地址：</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">udp::endpoint ep(boost::asio::ip::address_v4::from_string(_serverIp), NTP_PORT);</span><br></pre></td></tr></table></figure>
+<p>向这个ep send_to，并从这个ep receive_from数据包。</p>
+<h5 id="3-time-t的定义如下："><a href="#3-time-t的定义如下：" class="headerlink" title="3. time_t的定义如下："></a>3. time_t的定义如下：</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">__time64_t</span> <span class="keyword">time_t</span>;      <span class="comment">/* time value */</span></span><br><span class="line"><span class="keyword">typedef</span> __int64 <span class="keyword">__time64_t</span>;     <span class="comment">/* 64-bit time value */</span></span><br></pre></td></tr></table></figure>
+<p>也就是说这个time_t其实就是一个64bit的int，我们可以用uint64_t这个类型与之互换，他可以用来表示一个Timestamp。</p>
+<ol>
+<li><p>获取最后8字节内容有两种方式，一种是直接复制pBytes的内存，一种是构造NtpPacket，然后取成员，这里选择后者易于理解。</p>
+</li>
+<li><p>字节序的问题</p>
+</li>
+</ol>
+<p>网络字节序都是大端模式，需要进行转换，由于仅仅需要最后那个uint64_t所以我写了一个针对64bit的字节序转换函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reverseByteOrder</span><span class="params">(<span class="keyword">uint64_t</span> &amp;in)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">uint64_t</span> rs = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="keyword">sizeof</span>(<span class="keyword">uint64_t</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">memset</span>(<span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">uint8_t</span>*&gt;(&amp;rs) + len - <span class="number">1</span> - i</span><br><span class="line">                    , <span class="keyword">static_cast</span>&lt;<span class="keyword">uint8_t</span>&gt; ((in &amp; <span class="number">0xFF</span>LL &lt;&lt; (i * <span class="number">8</span>)) &gt;&gt; i * <span class="number">8</span>)</span><br><span class="line">                    , <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    in = rs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后一个64bit内容的高32位存了UTC秒数，所以需要取出来，然后再转换为本地时区的秒数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seconds = (last &amp; <span class="number">0x7FFFFFFF00000000</span>) &gt;&gt; <span class="number">32</span>;</span><br></pre></td></tr></table></figure>
+<p>注意最高位是不能取的，尽管是unsigned，至于为什么要- 61533950这个是笔者在自己电脑上尝试出来的，找了很多资料不知是哪里的问题，还请各位知道的读者告诉我哈。</p>
+<p>再来看看主函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* agrv[])</span> </span>&#123;</span><br><span class="line">    <span class="function">NtpClient <span class="title">ntp</span><span class="params">(<span class="string">"129.6.15.28"</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        <span class="keyword">time_t</span> tt = ntp.getTime();</span><br><span class="line">        boost::posix_time::ptime utc = <span class="keyword">from_time_t</span>(tt);</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Local Timestamp:"</span> &lt;&lt; time(<span class="number">0</span>) &lt;&lt; <span class="string">'\t'</span> &lt;&lt; <span class="string">"NTP Server:"</span> &lt;&lt; tt &lt;&lt; <span class="string">"("</span> &lt;&lt; to_simple_string(utc) &lt;&lt; <span class="string">")"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        Sleep(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里进行5次NTP请求，并使用boost的to_simple_string转换UTC时间打印结果。</p>
+<p>大概是这种效果：</p>
+<p><img src="115316_jWZi_580940.png" alt=""></p>
+<h2 id="收尾"><a href="#收尾" class="headerlink" title="收尾"></a>收尾</h2><p>同步时间一般都会想到找一个http api接口，本文主要是用了NTP协议。为了跨平台，上面的代码尽可能避免使用平台相关的宏和函数，只要稍作修改就能在各种平台下执行，也得益于boost这个强悍的准标准库给开发者带来的便利。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Micooz Lee
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://apporz.com/2014/10/01/cpp-ntp-client-using-boost/" title="C++使用Boost实现Network Time Protocol(NTP)客户端">https://apporz.com/2014/10/01/cpp-ntp-client-using-boost/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tech/" rel="tag"># tech</a>
+          
+            <a href="/tags/cpp/" rel="tag"># cpp</a>
+          
+            <a href="/tags/net/" rel="tag"># net</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/08/28/cpp-factory-design-pattern/" rel="next" title="C++我也来写个工厂模式">
+                <i class="fa fa-chevron-left"></i> C++我也来写个工厂模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/01/02/cpp-encoding-problem/" rel="prev" title="C++ 字符编码问题探究和中文乱码的产生">
+                C++ 字符编码问题探究和中文乱码的产生 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/master.portrait.png"
+                alt="Micooz Lee" />
+            
+              <p class="site-author-name" itemprop="name">Micooz Lee</p>
+              <p class="site-description motion-element" itemprop="description">FullStack JavaScript Engineer</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/micooz" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:micooz@hotmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/MicoozLee" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://instagram.com/micoozlee" target="_blank" title="Instagram">
+                    
+                      <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://flag.moe" title="哞菇菌" target="_blank">哞菇菌</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://haipz.com" title="海胖博客" target="_blank">海胖博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.otokaze.cn" title="音風の部屋" target="_blank">音風の部屋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.anotherhome.net" title="DIYgod" target="_blank">DIYgod</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.0xbbc.com" title="BlueCocoa" target="_blank">BlueCocoa</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://windisco.com" title="ShinCurry" target="_blank">ShinCurry</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://codelover.link" title="codelover" target="_blank">codelover</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.chionlab.moe" title="ChionTang" target="_blank">ChionTang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://rakume.com/#!/home" title="Rakume Hayashi" target="_blank">Rakume Hayashi</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://src.moe" title="POJO" target="_blank">POJO</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5F15;&#x8A00;" class="headerlink" title="&#x5F15;&#x8A00;"></a>&#x5F15;&#x8A00;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x51C6;&#x5907;" class="headerlink" title="&#x51C6;&#x5907;"></a>&#x51C6;&#x5907;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NTP-Packet分析"><span class="nav-number">3.</span> <span class="nav-text"><a href="#NTP-Packet&#x5206;&#x6790;" class="headerlink" title="NTP Packet&#x5206;&#x6790;"></a>NTP Packet&#x5206;&#x6790;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x7F16;&#x7801;" class="headerlink" title="&#x7F16;&#x7801;"></a>&#x7F16;&#x7801;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-需要的头文件和名字空间"><span class="nav-number">4.0.0.1.</span> <span class="nav-text"><a href="#1-&#x9700;&#x8981;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x548C;&#x540D;&#x5B57;&#x7A7A;&#x95F4;" class="headerlink" title="1. &#x9700;&#x8981;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x548C;&#x540D;&#x5B57;&#x7A7A;&#x95F4;"></a>1. &#x9700;&#x8981;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x548C;&#x540D;&#x5B57;&#x7A7A;&#x95F4;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-NtpPacket的构造"><span class="nav-number">4.0.0.2.</span> <span class="nav-text"><a href="#2-NtpPacket&#x7684;&#x6784;&#x9020;" class="headerlink" title="2. NtpPacket&#x7684;&#x6784;&#x9020;"></a>2. NtpPacket&#x7684;&#x6784;&#x9020;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-udp-socket是boost里面使用udp协议的套接字，他的构造需要一个io-service，io-service可以直接在全局区进行声明："><span class="nav-number">4.0.0.3.</span> <span class="nav-text"><a href="#1-udp-socket&#x662F;boost&#x91CC;&#x9762;&#x4F7F;&#x7528;udp&#x534F;&#x8BAE;&#x7684;&#x5957;&#x63A5;&#x5B57;&#xFF0C;&#x4ED6;&#x7684;&#x6784;&#x9020;&#x9700;&#x8981;&#x4E00;&#x4E2A;io-service&#xFF0C;io-service&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x5168;&#x5C40;&#x533A;&#x8FDB;&#x884C;&#x58F0;&#x660E;&#xFF1A;" class="headerlink" title="1. udp::socket&#x662F;boost&#x91CC;&#x9762;&#x4F7F;&#x7528;udp&#x534F;&#x8BAE;&#x7684;&#x5957;&#x63A5;&#x5B57;&#xFF0C;&#x4ED6;&#x7684;&#x6784;&#x9020;&#x9700;&#x8981;&#x4E00;&#x4E2A;io_service&#xFF0C;io_service&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x5168;&#x5C40;&#x533A;&#x8FDB;&#x884C;&#x58F0;&#x660E;&#xFF1A;"></a>1. udp::socket&#x662F;boost&#x91CC;&#x9762;&#x4F7F;&#x7528;udp&#x534F;&#x8BAE;&#x7684;&#x5957;&#x63A5;&#x5B57;&#xFF0C;&#x4ED6;&#x7684;&#x6784;&#x9020;&#x9700;&#x8981;&#x4E00;&#x4E2A;io_service&#xFF0C;io_service&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x5168;&#x5C40;&#x533A;&#x8FDB;&#x884C;&#x58F0;&#x660E;&#xFF1A;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-创建一个endpoint用来表示NTP-Server的地址："><span class="nav-number">4.0.0.4.</span> <span class="nav-text"><a href="#2-&#x521B;&#x5EFA;&#x4E00;&#x4E2A;endpoint&#x7528;&#x6765;&#x8868;&#x793A;NTP-Server&#x7684;&#x5730;&#x5740;&#xFF1A;" class="headerlink" title="2. &#x521B;&#x5EFA;&#x4E00;&#x4E2A;endpoint&#x7528;&#x6765;&#x8868;&#x793A;NTP Server&#x7684;&#x5730;&#x5740;&#xFF1A;"></a>2. &#x521B;&#x5EFA;&#x4E00;&#x4E2A;endpoint&#x7528;&#x6765;&#x8868;&#x793A;NTP Server&#x7684;&#x5730;&#x5740;&#xFF1A;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-time-t的定义如下："><span class="nav-number">4.0.0.5.</span> <span class="nav-text"><a href="#3-time-t&#x7684;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;" class="headerlink" title="3. time_t&#x7684;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;"></a>3. time_t&#x7684;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收尾"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x6536;&#x5C3E;" class="headerlink" title="&#x6536;&#x5C3E;"></a>&#x6536;&#x5C3E;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Micooz Lee</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://micooz.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://apporz.com/2014/10/01/cpp-ntp-client-using-boost/';
+          this.page.identifier = '2014/10/01/cpp-ntp-client-using-boost/';
+          this.page.title = 'C++使用Boost实现Network Time Protocol(NTP)客户端';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://micooz.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+</body>
+</html>

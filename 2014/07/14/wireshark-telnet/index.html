@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/uploads/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="tech,net,wireshark," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Micooz" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Telnet协议是TCP/IP协议族中的一员，是Internet远程登陆服务的标准协议和主要方式。它为用户提供了在本地计算机上完成远程主机工作的能力。在终端使用者的电脑上使用telnet程序，用它连接到服务器。终端使用者可以在telnet程序中输入命令，这些命令会在服务器上运行，就像直接在服务器的控制台上输入一样。可以在本地就能控制服务器。要开始一个telnet会话，必须输入用户名和密码来登录服">
+<meta name="keywords" content="tech,net,wireshark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实战利用WireShark对Telnet协议进行抓包分析">
+<meta property="og:url" content="https://apporz.com/2014/07/14/wireshark-telnet/index.html">
+<meta property="og:site_name" content="Micooz">
+<meta property="og:description" content="Telnet协议是TCP/IP协议族中的一员，是Internet远程登陆服务的标准协议和主要方式。它为用户提供了在本地计算机上完成远程主机工作的能力。在终端使用者的电脑上使用telnet程序，用它连接到服务器。终端使用者可以在telnet程序中输入命令，这些命令会在服务器上运行，就像直接在服务器的控制台上输入一样。可以在本地就能控制服务器。要开始一个telnet会话，必须输入用户名和密码来登录服">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/111722_Jjvg_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/112904_6w07_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/114355_Z2B3_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/115604_mvis_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/125137_7Ecn_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/135919_c2Ku_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/140356_V3dZ_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/140743_Jz4V_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/141316_ja5G_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/142132_cKft_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/142511_K1EA_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/142751_HseS_580940.png">
+<meta property="og:image" content="https://apporz.com/2014/07/14/wireshark-telnet/143915_Opd3_580940.png">
+<meta property="og:updated_time" content="2017-12-08T13:17:42.236Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="实战利用WireShark对Telnet协议进行抓包分析">
+<meta name="twitter:description" content="Telnet协议是TCP/IP协议族中的一员，是Internet远程登陆服务的标准协议和主要方式。它为用户提供了在本地计算机上完成远程主机工作的能力。在终端使用者的电脑上使用telnet程序，用它连接到服务器。终端使用者可以在telnet程序中输入命令，这些命令会在服务器上运行，就像直接在服务器的控制台上输入一样。可以在本地就能控制服务器。要开始一个telnet会话，必须输入用户名和密码来登录服">
+<meta name="twitter:image" content="https://apporz.com/2014/07/14/wireshark-telnet/111722_Jjvg_580940.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://apporz.com/2014/07/14/wireshark-telnet/"/>
+
+
+
+
+
+  <title>实战利用WireShark对Telnet协议进行抓包分析 | Micooz</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-72182315-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Micooz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Make something different!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://apporz.com/2014/07/14/wireshark-telnet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Micooz Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/master.portrait.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Micooz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">实战利用WireShark对Telnet协议进行抓包分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-07-14T00:00:00+08:00">
+                2014-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/07/14/wireshark-telnet/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2014/07/14/wireshark-telnet/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Telnet协议是TCP/IP协议族中的一员，是Internet远程登陆服务的标准协议和主要方式。它为用户提供了在本地计算机上完成远程主机工作的能力。在终端使用者的电脑上使用telnet程序，用它连接到服务器。终端使用者可以在telnet程序中输入命令，这些命令会在服务器上运行，就像直接在服务器的控制台上输入一样。可以在本地就能控制服务器。要开始一个telnet会话，必须输入用户名和密码来登录服务器。Telnet是常用的远程控制Web服务器的方法。</p>
+</blockquote>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
+<li>虚拟机Virtual Box(Telnet服务端)<br>安装Windows XP SP3操作系统<br>开启了Telnet服务<br>添加了一个账户用于远程登录,用户名和密码都是micooz</li>
+<li>宿主机Windows 8.1 Pro(Telnet客户端)<br>安装了分析工具Wireshark1.11.2<br>安装了Telnet客户端程序</li>
+</ul>
+<p>PS:虚拟机网卡选用桥接模式</p>
+<h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><ol>
+<li>开启虚拟机和Wireshark</li>
+<li>查看XP获得的ip地址,这里是<strong>192.168.199.134</strong>;网卡MAC地址:08:00:27:a0:9f:f8<br>宿主机IP地址是<strong>192.168.199.154</strong>;网卡MAC地址:00:26:4d:a1:59:de</li>
+<li>客户端主机启动cmd键入命令<br>telnet 192.168.199.134 回车</li>
+<li>显示是否发送密码<br>回车</li>
+<li>显示login:<br>键入micooz回车</li>
+<li>显示password:<br>键入micooz回车</li>
+<li>进入telnet客户端主界面命令行</li>
+<li>键入net user回车</li>
+<li>显示结果</li>
+<li>关闭cmd</li>
+<li>结束</li>
+</ol>
+<h2 id="开始分析"><a href="#开始分析" class="headerlink" title="开始分析"></a>开始分析</h2><p><strong>①建立连接(TCP三次握手)</strong></p>
+<p>步骤3执行后,telnet客户端开始工作,首先是与虚拟机中的服务端程序建立TCP连接,从抓取的数据包来看,首先关于本次分析的数据包是典型的TCP三次握手,如图所示:</p>
+<p><img src="111722_Jjvg_580940.png" alt=""></p>
+<p>由于是我第一次搞网络协议分析,就TCP的三次握手过程也做一个分析吧.</p>
+<p>主机(192.168.199.154)发送一个连接请求到虚拟机(192.168.199.134),第一个TCP包的格式如图所示:</p>
+<p><img src="112904_6w07_580940.png" alt=""></p>
+<p>|以太网v2头|ipv4报文|TCP报文|</p>
+<p>其中以太网v2头是由数据链路层加上去的:</p>
+<p>1-6bytes是目的地址,也即虚拟机的网卡MAC,</p>
+<p>7-12bytes是源地址,也即宿主机MAC.</p>
+<p>13-14(0x0800)是上层协议,这里是IP</p>
+<p>第二段是ipv4的报文,网际协议IP是工作在网络层,也就是数据链路层的上层,上图数据区选中部分就是ipv4数据,其格式为:</p>
+<p><img src="114355_Z2B3_580940.png" alt=""></p>
+<p>可以非常清楚的看到那些教科书上讲到的IPv4报文格式在实际中式如何表现出来的.</p>
+<p>值得注意的是,IPv4报文中的源地址和目的地址是ip地址,版本号TCP是6,标志字段是010就是禁止下层分段,且是完整的报文</p>
+<p>第三段是TCP报文,从上面两个可以知道,这个TCP包被层层包装,经过下面一层就相应的包装一层,第三段是经过传输层的数</p>
+<p>据,TCP报文的格式为:</p>
+<p><img src="115604_mvis_580940.png" alt=""></p>
+<p>和书本上讲的格式基本一致,这里说明了TCP的源端口52456也就是宿主机建立连接开出来的端口,目的端口23显然是</p>
+<p>telnet服务默认端口.</p>
+<p>Sequence number同步序号4bytes,这里是0xa1 21 e2 42,但这里显示的是相对值0.</p>
+<p>Acknowledgment number确认序号4bytes,为0,因为还是第一个握手包.</p>
+<p>Header Length头长度32字节,滑动窗口大小8192字节(8MB),校验和,紧急指针为0.</p>
+<p>Options选项12字节,其中包含最大传输单元MTU默认是1460bytes.</p>
+<p>再来看看第二个TCP数据包,它是一个来自虚拟机的应答,按照三次握手的原则,这个数据包中TCP报文确认序号应该等于上</p>
+<p>一个请求包中的同步序号+1,我们来看一下是不是:</p>
+<p>Pack1. Seq = 0xa1 21 e2 42 Ack = 0x00 00 00 00</p>
+<p>Pack2. Seq = 0x97 0f 37 11 Ack = 0xa1 21 e2 43</p>
+<p>看下图更清楚:</p>
+<p><img src="125137_7Ecn_580940.png" alt=""></p>
+<p>显然如TCP规定的那样工作. Flags字段中也显示出两个包的标志位.第一个是SYN,第二个是SYN,ACK.</p>
+<p>那么显然第三个包应该这样工作:</p>
+<p>Pack1. Seq = 0xa1 21 e2 42 [Ack = 0x00 00 00 00]</p>
+<p>Pack2. Seq = 0x97 0f 37 11 Ack = 0xa1 21 e2 43</p>
+<p>Pack3. [Seq = 0xa1 21 e2 43] Ack = 0x97 0f 37 12 </p>
+<p>主机收到Pack2,取出其中Seq+1赋给Ack,然后给虚拟机做出应答. Pack1中的Ack和Pack3中的Seq在一次完整的三次</p>
+<p>握手中似乎没起到什么作用,如果发生丢失可能会起作用吧,这里没条件去测试.</p>
+<p>那么,虽然还没正式进入Telnet的核心,但是TCP三次握手的流程基本清晰了.下面小结一下:</p>
+<hr>
+<p>1.TCP连接的建立通过三次握手完成.<br>2.TCP连接建立从传输层出发,TCP报文包装一个IP报头后形成一个IPv4报文经过网络层,然后再包装一个以太网帧头形成一个Ethernet帧通过数据链路层.<br>3.传输层的TCP报文含有Port端口地址; 网络层的IP报文中含有IP地址; 数据链路层中Ethernet帧含有MAC地址.可见层层<br>  地址的不同之处,以及服务对象的不同之处.<br>4.三次握手规则就不再阐述了.</p>
+<p><strong>②身份确认</strong></p>
+<p>TCP连接建立后,主机和虚拟机相互交换一些信息,包括服务端的配置信息,主机的应答,是否需要登录等等,并且间断使用TCP</p>
+<p>包保持连接.</p>
+<p>当双方信息得到确认后,虚拟机发送欢迎信息(Welcome to Microsoft Telnet Service \r\n),主机做出应答</p>
+<p>,随后又发送(\n\rlogin:),主机做出应答,然后同步一次,主机在CMD发生中断,接收用户输入,虚拟机等待用户输入.</p>
+<p><img src="135919_c2Ku_580940.png" alt=""></p>
+<p>主机输入一个字符就发送一个Telnet报文,然后远程返回一个应答,之后主机发送一个TCP报文.</p>
+<p>三个一组:Telnet Telnet TCP</p>
+<p><img src="140356_V3dZ_580940.png" alt=""></p>
+<p>当然最后还有一个回车符\r\n也要产生三个数据包.</p>
+<p>回车符发送之后,远端立即回送一个\n\rpassword:要求输入密码.</p>
+<p><img src="140743_Jz4V_580940.png" alt=""></p>
+<p>密码输入过程略有不同,一个字符产生两个包,一个是Telnet,一个是TCP.密码明文传输.</p>
+<p><img src="141316_ja5G_580940.png" alt=""></p>
+<p><strong>③命令执行和响应</strong></p>
+<p>完成密码输入后,服务端验证成功后发送一个Telnet报文询问是否Do Terminal Type开始执行命令行,主机客户端回应Will Terminal Type,将要执行,然后双方发送Suboption End消息,之后服务端放送欢迎消息,如图:</p>
+<p><img src="142132_cKft_580940.png" alt=""></p>
+<p>那么之后就可以开始输入命令了,我输入的是net user\r\n</p>
+<p><img src="142511_K1EA_580940.png" alt=""></p>
+<p>和之前输入用户名的传输方法基本一样.两个Telnet一个TCP同步.</p>
+<p>完成输入后回车,服务端执行命令并作出回应:</p>
+<p><img src="142751_HseS_580940.png" alt=""></p>
+<p>可以看到Administrator Guest HelpAssistant等字样,说明正确返回了执行结果.</p>
+<hr>
+<p>关闭CMD窗口时,产生了4个TCP包,第一个TCP包设置标志位FIN告知本次通信结束,服务端回应一个TCP,</p>
+<p>表示做好准备关闭连接,随后又发送一个TCP包设置FIN告知客户端要准备断开连接并断开,客户端应答一个表示已断开.通信结束.</p>
+<p><img src="143915_Opd3_580940.png" alt=""></p>
+<p>这是典型的关闭TCP连接的过程.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Telnet服务是建立在TCP基础之上的,保证数据的准确性.</p>
+<p>建立连接后,每键入一个字符就要发送和应答,产生至少2个数据包,开销很大.</p>
+<p>传统的Telnet由于密码明文传输的问题,帐号和密码等敏感资料容易会被窃听,因此很多服务器都会封锁Telnet服务,改</p>
+<p>用更安全的SSH.</p>
+<p>PS:本文是博主第一次尝试使用Wireshark进行网络协议分析,今后可能还会分析互联网其它一些协议,计算机网络</p>
+<p>也是闲来无事自学的,本身非计算机专业,所以文中难免有专业术语或者概念性错误,还请批评指正!谢谢.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Micooz Lee
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://apporz.com/2014/07/14/wireshark-telnet/" title="实战利用WireShark对Telnet协议进行抓包分析">https://apporz.com/2014/07/14/wireshark-telnet/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tech/" rel="tag"># tech</a>
+          
+            <a href="/tags/net/" rel="tag"># net</a>
+          
+            <a href="/tags/wireshark/" rel="tag"># wireshark</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/06/10/cpp-lambda-expression-asm-2/" rel="next" title="C++11新特性中的匿名函数Lambda表达式的汇编实现分析（二）">
+                <i class="fa fa-chevron-left"></i> C++11新特性中的匿名函数Lambda表达式的汇编实现分析（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/07/15/wireshark-dns/" rel="prev" title="利用WireShark进行DNS协议分析">
+                利用WireShark进行DNS协议分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/master.portrait.png"
+                alt="Micooz Lee" />
+            
+              <p class="site-author-name" itemprop="name">Micooz Lee</p>
+              <p class="site-description motion-element" itemprop="description">FullStack JavaScript Engineer</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/micooz" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:micooz@hotmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/MicoozLee" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://instagram.com/micoozlee" target="_blank" title="Instagram">
+                    
+                      <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://flag.moe" title="哞菇菌" target="_blank">哞菇菌</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://haipz.com" title="海胖博客" target="_blank">海胖博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.otokaze.cn" title="音風の部屋" target="_blank">音風の部屋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.anotherhome.net" title="DIYgod" target="_blank">DIYgod</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.0xbbc.com" title="BlueCocoa" target="_blank">BlueCocoa</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://windisco.com" title="ShinCurry" target="_blank">ShinCurry</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://codelover.link" title="codelover" target="_blank">codelover</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.chionlab.moe" title="ChionTang" target="_blank">ChionTang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://rakume.com/#!/home" title="Rakume Hayashi" target="_blank">Rakume Hayashi</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://src.moe" title="POJO" target="_blank">POJO</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x51C6;&#x5907;&#x5DE5;&#x4F5C;" class="headerlink" title="&#x51C6;&#x5907;&#x5DE5;&#x4F5C;"></a>&#x51C6;&#x5907;&#x5DE5;&#x4F5C;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作流程"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x64CD;&#x4F5C;&#x6D41;&#x7A0B;" class="headerlink" title="&#x64CD;&#x4F5C;&#x6D41;&#x7A0B;"></a>&#x64CD;&#x4F5C;&#x6D41;&#x7A0B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始分析"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x5F00;&#x59CB;&#x5206;&#x6790;" class="headerlink" title="&#x5F00;&#x59CB;&#x5206;&#x6790;"></a>&#x5F00;&#x59CB;&#x5206;&#x6790;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Micooz Lee</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://micooz.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://apporz.com/2014/07/14/wireshark-telnet/';
+          this.page.identifier = '2014/07/14/wireshark-telnet/';
+          this.page.title = '实战利用WireShark对Telnet协议进行抓包分析';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://micooz.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+</body>
+</html>

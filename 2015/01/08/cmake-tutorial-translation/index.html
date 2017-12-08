@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/uploads/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="tech,cmake," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Micooz" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="CMake Tutorial原版英文Tutorial： http://www.cmake.org/cmake-tutorial/ Step1-Step7的源代码及CMakeLists： http://public.kitware.com/cgi-bin/viewcvs.cgi/CMake/Tests/Tutorial/  Below is a step-by-step tutorial cover">
+<meta name="keywords" content="tech,cmake">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMake官方Tutorial中英对照翻译">
+<meta property="og:url" content="https://apporz.com/2015/01/08/cmake-tutorial-translation/index.html">
+<meta property="og:site_name" content="Micooz">
+<meta property="og:description" content="CMake Tutorial原版英文Tutorial： http://www.cmake.org/cmake-tutorial/ Step1-Step7的源代码及CMakeLists： http://public.kitware.com/cgi-bin/viewcvs.cgi/CMake/Tests/Tutorial/  Below is a step-by-step tutorial cover">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-12-08T13:17:42.200Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CMake官方Tutorial中英对照翻译">
+<meta name="twitter:description" content="CMake Tutorial原版英文Tutorial： http://www.cmake.org/cmake-tutorial/ Step1-Step7的源代码及CMakeLists： http://public.kitware.com/cgi-bin/viewcvs.cgi/CMake/Tests/Tutorial/  Below is a step-by-step tutorial cover">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://apporz.com/2015/01/08/cmake-tutorial-translation/"/>
+
+
+
+
+
+  <title>CMake官方Tutorial中英对照翻译 | Micooz</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-72182315-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Micooz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Make something different!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://apporz.com/2015/01/08/cmake-tutorial-translation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Micooz Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/master.portrait.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Micooz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CMake官方Tutorial中英对照翻译</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-01-08T00:00:00+08:00">
+                2015-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/01/08/cmake-tutorial-translation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/01/08/cmake-tutorial-translation/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="CMake-Tutorial"><a href="#CMake-Tutorial" class="headerlink" title="CMake Tutorial"></a>CMake Tutorial</h1><p>原版英文Tutorial：</p>
+<p><a href="http://www.cmake.org/cmake-tutorial/" target="_blank" rel="noopener">http://www.cmake.org/cmake-tutorial/</a></p>
+<p>Step1-Step7的源代码及CMakeLists：</p>
+<p><a href="http://public.kitware.com/cgi-bin/viewcvs.cgi/CMake/Tests/Tutorial/" target="_blank" rel="noopener">http://public.kitware.com/cgi-bin/viewcvs.cgi/CMake/Tests/Tutorial/</a></p>
+<blockquote>
+<p>Below is a step-by-step tutorial covering common build system issues<br>that CMake helps to address. Many of these topics have been introduced<br>in Mastering CMake as separate issues but seeing how they all work<br>together in an example project can be very helpful. This tutorial can<br>be found in the Tests/Tutorial directory of the CMake source code<br>tree. Each step has its own subdirectory containing a complete copy of<br>the tutorial for that step</p>
+</blockquote>
+<p>下面是涵盖CMake解决常见构建系统问题的一个手把手教程。通过单独的例子，阐述了CMake是如何协同工作的，这将会对你十分有帮助。这个教程可以在CMake源代码树的<code>Test/Tutorial</code>目录下找到。每个步骤有各自的子目录，且包含了一份关于这个步骤的完整教程。</p>
+<h1 id="A-Basic-Starting-Point-Step1-简单的开始"><a href="#A-Basic-Starting-Point-Step1-简单的开始" class="headerlink" title="A Basic Starting Point (Step1)  简单的开始"></a>A Basic Starting Point (Step1)  简单的开始</h1><blockquote>
+<p>The most basic project is an executable built from source code files.<br>For simple projects a two line CMakeLists file is all that is<br>required. This will be the starting point for our tutorial. The<br>CMakeLists file looks like:</p>
+</blockquote>
+<p>最基本的工程是从源代码文件构建出可执行程序。对于简单的工程而言，一个两行的<code>CMakeLists</code>文件已经足够了。这将会是我们教程开始的第一步。<code>CMakeLists</code>文件看起来像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cmake_minimum_required (VERSION 2.6)</span><br><span class="line"></span><br><span class="line">project (Tutorial)</span><br><span class="line"></span><br><span class="line">add_executable(Tutorial tutorial.cxx)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Note that this example uses lower case commands in the CMakeLists<br>file. Upper, lower, and mixed case commands are supported by CMake.<br>The source code for tutorial.cxx will compute the square root of a<br>number and the first version of it is very simple, as follows:</p>
+</blockquote>
+<p>注意到这个例子在<code>CMakeLists</code>中用的是小写命令。无论是大写、小写、还是混合大小写，CMake都支持。<br>源代码文件<code>tutorial.cxx</code>将计算一个数的平方根，第一个版本十分简单：</p>
+<pre><code>&lt;!-- lang: cpp --&gt;
+// A simple program that computes the square root of a number
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+
+int main (int argc, char *argv[])
+{
+  if (argc &lt; 2)
+    {
+    fprintf(stdout,&quot;Usage: %s number\n&quot;,argv[0]);
+    return 1;
+    }
+  double inputValue = atof(argv[1]);
+  double outputValue = sqrt(inputValue);
+  fprintf(stdout,&quot;The square root of %g is %g\n&quot;,
+          inputValue, outputValue);
+  return 0;
+}
+</code></pre><h2 id="Adding-a-Version-Number-and-Configured-Header-File-添加一个版本号和用于配置的头文件"><a href="#Adding-a-Version-Number-and-Configured-Header-File-添加一个版本号和用于配置的头文件" class="headerlink" title="Adding a Version Number and Configured Header File 添加一个版本号和用于配置的头文件"></a>Adding a Version Number and Configured Header File 添加一个版本号和用于配置的头文件</h2><blockquote>
+<p>The first feature we will add is to provide our executable and project<br>with a version number. While you can do this exclusively in the source<br>code, doing it in the CMakeLists file provides more flexibility. To<br>add a version number we modify the CMakeLists file as follows:</p>
+</blockquote>
+<p>我们将为可执行程序和工程提供一个版本号作为第一个特性。当然你可以在源代码中专门这样做，但是使用<code>CMakeLists</code>文件将更加灵活。为了添加一个版本号，我们修改<code>CMakeLists</code>文件如下：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+cmake_minimum_required (VERSION 2.6)
+project (Tutorial)
+# The version number.
+set (Tutorial_VERSION_MAJOR 1)
+set (Tutorial_VERSION_MINOR 0)
+
+# configure a header file to pass some of the CMake settings
+# to the source code
+configure_file (
+  &quot;${PROJECT_SOURCE_DIR}/TutorialConfig.h.in&quot;
+  &quot;${PROJECT_BINARY_DIR}/TutorialConfig.h&quot;
+  )
+
+# add the binary tree to the search path for include files
+# so that we will find TutorialConfig.h
+include_directories(&quot;${PROJECT_BINARY_DIR}&quot;)
+
+# add the executable
+add_executable(Tutorial tutorial.cxx)
+</code></pre><blockquote>
+<p>Since the configured file will be written into the binary tree we must<br>add that directory to the list of paths to search for include files.<br>We then create a TutorialConfig.h.in file in the source tree with the<br>following contents:</p>
+</blockquote>
+<p>由于配置文件将被写入二进制树，我们必须要在路径列表中添加目录以搜索包含文件。<br>然后我们在源代码树中添加<code>TutorialConfig.h.in</code>文件：</p>
+<pre><code>&lt;!-- lang: cpp --&gt;
+// the configured options and settings for Tutorial
+#define Tutorial_VERSION_MAJOR @Tutorial_VERSION_MAJOR@
+#define Tutorial_VERSION_MINOR @Tutorial_VERSION_MINOR@
+</code></pre><blockquote>
+<p>When CMake configures this header file the values for<br>@Tutorial_VERSION_MAJOR@ and @Tutorial_VERSION_MINOR@ will be replaced<br>by the values from the CMakeLists file. Next we modify tutorial.cxx to<br>include the configured header file and to make use of the version<br>numbers. The resulting source code is listed below.</p>
+</blockquote>
+<p>CMake在配置过程中，将从<code>CMakeLists</code>文件中找到并替换头文件中的<code>@Tutorial_VERSION_MAJOR@</code>和<code>@Tutorial_VERSION_MINOR@</code>。之后我们修改<code>tutorial.cxx</code>，使它包含配置头文件，然后利用版本号。最终的源代码如下：</p>
+<pre><code>&lt;!-- lang: cpp --&gt;
+// A simple program that computes the square root of a number
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+#include &quot;TutorialConfig.h&quot;
+
+int main (int argc, char *argv[])
+{
+  if (argc &lt; 2)
+    {
+    fprintf(stdout,&quot;%s Version %d.%d\n&quot;,
+            argv[0],
+            Tutorial_VERSION_MAJOR,
+            Tutorial_VERSION_MINOR);
+    fprintf(stdout,&quot;Usage: %s number\n&quot;,argv[0]);
+    return 1;
+    }
+  double inputValue = atof(argv[1]);
+  double outputValue = sqrt(inputValue);
+  fprintf(stdout,&quot;The square root of %g is %g\n&quot;,
+          inputValue, outputValue);
+  return 0;
+}
+</code></pre><blockquote>
+<p>The main changes are the inclusion of the TutorialConfig.h header file<br>and printing out a version number as part of the usage message.</p>
+</blockquote>
+<p>主要的改变是添加了<code>TutorialConfig.h</code>头文件以及在使用帮助中打印出了版本号。</p>
+<h1 id="Adding-a-Library-Step-2-添加一个库"><a href="#Adding-a-Library-Step-2-添加一个库" class="headerlink" title="Adding a Library (Step 2) 添加一个库"></a>Adding a Library (Step 2) 添加一个库</h1><blockquote>
+<p>Now we will add a library to our project. This library will contain<br>our own implementation for computing the square root of a number. The<br>executable can then use this library instead of the standard square<br>root function provided by the compiler. For this tutorial we will put<br>the library into a subdirectory called MathFunctions. It will have the<br>following one line CMakeLists file:</p>
+</blockquote>
+<p>现在我们将为工程添加一个库。这个库将包含计算一个数的平方根的实现代码。可执行程序可以使用这个库，来替代编译器提供的标准平方根函数。在这个教程中，我们将把库放进一个叫做<code>MathFunctions</code>的子目录中。<code>CMakeLists</code>文件将包含这样一行：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+add_library(MathFunctions mysqrt.cxx)
+</code></pre><blockquote>
+<p>The source file mysqrt.cxx has one function called mysqrt that<br>provides similar functionality to the compiler’s sqrt function. To<br>make use of the new library we add an add_subdirectory call in the top<br>level CMakeLists file so that the library will get built. We also add<br>another include directory so that the MathFunctions/mysqrt.h header<br>file can be found for the function prototype. The last change is to<br>add the new library to the executable. The last few lines of the top<br>level CMakeLists file now look like:</p>
+</blockquote>
+<p>源代码文件<code>mysqrt.cxx</code>有一个叫做<code>mysqrt</code>的函数，提供了一个类似于编译器<code>sqrt</code>函数的功能。为了能利用这个新库，我们在<code>CMakeLists</code>文件的顶部添加一个<code>add_subdirectory</code>调用来使之能够被构建。同时，我们也添加一个包含目录使<code>MathFunctions/mysqrt.h</code>头文件提供函数原型。最后一个改变是给可执行程序添加新库。<code>CMakeLists</code>文件的最后几行看起来像这样：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+include_directories (&quot;${PROJECT_SOURCE_DIR}/MathFunctions&quot;)
+add_subdirectory (MathFunctions) 
+
+# add the executable
+add_executable (Tutorial tutorial.cxx)
+target_link_libraries (Tutorial MathFunctions)
+</code></pre><blockquote>
+<p>Now let us consider making the MathFunctions library optional. In this<br>tutorial there really isn’t any reason to do so, but with larger<br>libraries or libraries that rely on third party code you might want<br>to. The first step is to add an option to the top level CMakeLists<br>file.</p>
+</blockquote>
+<p>现在让我们考虑使<code>MathFunctions</code>库可选。这个教程中确实没有任何理由这样做，但是对于更大的库或依赖于第三方代码的库来说，你可能更愿意这样做。第一步是在<code>CMakeLists</code>中添加一个选项：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+# should we use our own math functions?
+option (USE_MYMATH 
+        &quot;Use tutorial provided math implementation&quot; ON) 
+</code></pre><blockquote>
+<p>This will show up in the CMake GUI with a default value of ON that the<br>user can change as desired. This setting will be stored in the cache<br>so that the user does not need to keep setting it each time they run<br>CMake on this project. The next change is to make the build and<br>linking of the MathFunctions library conditional. To do this we change<br>the end of the top level CMakeLists file to look like the following:</p>
+</blockquote>
+<p>这将在<code>CMake GUI</code>中默认显示为ON，这样使用者可以根据需要来改变它。这个配置将被保存在缓存中，这样使用者不必在工程中使用CMake时每次都去配置它。下一个改变是使构建和链接<code>MathFunctions</code>库有条件化。为了达到目的我们改变<code>CMakeLists</code>文件如下：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+# add the MathFunctions library?
+#
+if (USE_MYMATH)
+  include_directories (&quot;${PROJECT_SOURCE_DIR}/MathFunctions&quot;)
+  add_subdirectory (MathFunctions)
+  set (EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
+endif (USE_MYMATH)
+
+# add the executable
+add_executable (Tutorial tutorial.cxx)
+target_link_libraries (Tutorial  ${EXTRA_LIBS})
+</code></pre><blockquote>
+<p>This uses the setting of USE_MYMATH to determine if the MathFunctions<br>should be compiled and used. Note the use of a variable (EXTRA_LIBS in<br>this case) to collect up any optional libraries to later be linked<br>into the executable. This is a common approach used to keep larger<br>projects with many optional components clean. The corresponding<br>changes to the source code are fairly straight forward and leave us<br>with:</p>
+</blockquote>
+<p>它使用了<code>USE_MYMATH</code>设置来决定<code>MathFunctions</code>是否应该被编译和使用。注意变量<code>EXTRA_LIBS</code>（本例中）用来收集接下来将被链接到可执行程序中的可选库。这是一个保持大型工程和许多可选组件干净的常用方法。在源代码中的相应改变非常简单：</p>
+<pre><code>&lt;!-- lang: cpp --&gt;
+// A simple program that computes the square root of a number
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+#include &quot;TutorialConfig.h&quot;
+#ifdef USE_MYMATH
+#include &quot;MathFunctions.h&quot;
+#endif
+
+int main (int argc, char *argv[])
+{
+  if (argc &lt; 2)
+    {
+    fprintf(stdout,&quot;%s Version %d.%d\n&quot;, argv[0],
+            Tutorial_VERSION_MAJOR,
+            Tutorial_VERSION_MINOR);
+    fprintf(stdout,&quot;Usage: %s number\n&quot;,argv[0]);
+    return 1;
+    }
+
+  double inputValue = atof(argv[1]);
+
+#ifdef USE_MYMATH
+  double outputValue = mysqrt(inputValue);
+#else
+  double outputValue = sqrt(inputValue);
+#endif
+
+  fprintf(stdout,&quot;The square root of %g is %g\n&quot;,
+          inputValue, outputValue);
+  return 0;
+}
+</code></pre><blockquote>
+<p>In the source code we make use of USE_MYMATH as well. This is provided<br>from CMake to the source code through the TutorialConfig.h.in<br>configured file by adding the following line to it:</p>
+</blockquote>
+<p>在源代码中我们利用了<code>USE_MYMATH</code>。它是由<code>TutorialConfig.h.in</code>文件通过CMake提供的：</p>
+<pre><code>&lt;!-- lang: cpp --&gt;
+#cmakedefine USE_MYMATH
+</code></pre><h1 id="Installing-and-Testing-Step-3-安装和测试"><a href="#Installing-and-Testing-Step-3-安装和测试" class="headerlink" title="Installing and Testing (Step 3) 安装和测试"></a>Installing and Testing (Step 3) 安装和测试</h1><blockquote>
+<p>For the next step we will add install rules and testing support to our<br>project. The install rules are fairly straight forward. For the<br>MathFunctions library we setup the library and the header file to be<br>installed by adding the following two lines to MathFunctions’<br>CMakeLists file:</p>
+</blockquote>
+<p>下一步我们将给工程添加安装规则和测试支持。安装规则相当简单。</p>
+<p>对于<code>MathFunctions</code>库，我们通过在<code>MathFunction</code>的<code>CMakeLists</code>文件中添加下面两行，来使它的库和头文件可以被安装：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+install (TARGETS MathFunctions DESTINATION bin)
+install (FILES MathFunctions.h DESTINATION include)
+</code></pre><blockquote>
+<p>For the application the following lines are added to the top level<br>CMakeLists file to install the executable and the configured header<br>file:</p>
+</blockquote>
+<p>对于应用程序，在<code>CMakeLists</code>中添加下面的命令来安装可执行程序和配置文件：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+# add the install targets
+install (TARGETS Tutorial DESTINATION bin)
+install (FILES &quot;${PROJECT_BINARY_DIR}/TutorialConfig.h&quot;        
+         DESTINATION include)
+</code></pre><blockquote>
+<p>That is all there is to it. At this point you should be able to build<br>the tutorial, then type make install (or build the INSTALL target from<br>an IDE) and it will install the appropriate header files, libraries,<br>and executables. The CMake variable CMAKE_INSTALL_PREFIX is used to<br>determine the root of where the files will be installed. Adding<br>testing is also a fairly straight forward process. At the end of the<br>top level CMakeLists file we can add a number of basic tests to verify<br>that the application is working correctly.</p>
+</blockquote>
+<p>就是这么一回事，现在你能够构建这个教程了，然后执行<code>make install</code>（或者通过IDE构建INSTALL目标），它将安装适当的头文件，库和可执行程序。CMake变量<code>CMAKE_INSTALL_PREFIX</code>用来决定所安装文件的根目录。</p>
+<p>添加测试也非常简单。在顶级<code>CMakeLists</code>文件的最后，我们可以添加一系列基础测试来验证应用程序是否运行正常。</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+# does the application run
+add_test (TutorialRuns Tutorial 25)
+
+# does it sqrt of 25
+add_test (TutorialComp25 Tutorial 25)
+
+set_tests_properties (TutorialComp25 
+  PROPERTIES PASS_REGULAR_EXPRESSION &quot;25 is 5&quot;)
+
+# does it handle negative numbers
+add_test (TutorialNegative Tutorial -25)
+set_tests_properties (TutorialNegative
+  PROPERTIES PASS_REGULAR_EXPRESSION &quot;-25 is 0&quot;)
+
+# does it handle small numbers
+add_test (TutorialSmall Tutorial 0.0001)
+set_tests_properties (TutorialSmall
+  PROPERTIES PASS_REGULAR_EXPRESSION &quot;0.0001 is 0.01&quot;)
+
+# does the usage message work?
+add_test (TutorialUsage Tutorial)
+set_tests_properties (TutorialUsage
+  PROPERTIES 
+  PASS_REGULAR_EXPRESSION &quot;Usage:.*number&quot;)
+</code></pre><blockquote>
+<p>The first test simply verifies that the application runs, does not<br>segfault or otherwise crash, and has a zero return value. This is the<br>basic form of a CTest test. The next few tests all make use of the<br>PASS_REGULAR_EXPRESSION test property to verify that the output of the<br>test contains certain strings. In this case verifying that the<br>computed square root is what it should be and that the usage message<br>is printed when an incorrect number of arguments are provided. If you<br>wanted to add a lot of tests to test different input values you might<br>consider creating a macro like the following:</p>
+</blockquote>
+<p>第一个测试例子验证了程序运行，是否出现段错误或者崩溃，是否返回0值。这是一个<code>CTest</code>的基本测试。接下来的几个测试都利用了<code>PASS_REGULAR_EXPRESSION</code>来验证输出是否包含指定的字符串。在这种情况下，验证计算平方根是必要的，当提供了一个错误的参数时就打印用法信息。如果你想添加测试多个不同的输入值，可以考虑写一个像下面这样的宏：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+#define a macro to simplify adding tests, then use it
+macro (do_test arg result)
+  add_test (TutorialComp${arg} Tutorial ${arg})
+  set_tests_properties (TutorialComp${arg}
+    PROPERTIES PASS_REGULAR_EXPRESSION ${result})
+endmacro (do_test)
+
+# do a bunch of result based tests
+do_test (25 &quot;25 is 5&quot;)
+do_test (-25 &quot;-25 is 0&quot;)
+</code></pre><blockquote>
+<p>For each invocation of do_test, another test is added to the project<br>with a name, input, and results based on the passed arguments.</p>
+</blockquote>
+<p>对于每个<code>do_test</code>调用，都会根据传入其中的参数，在工程中添加名称、输入和结果。</p>
+<h1 id="Adding-System-Introspection-Step-4-添加系统反馈"><a href="#Adding-System-Introspection-Step-4-添加系统反馈" class="headerlink" title="Adding System Introspection (Step 4) 添加系统反馈"></a>Adding System Introspection (Step 4) 添加系统反馈</h1><blockquote>
+<p>Next let us consider adding some code to our project that depends on<br>features the target platform may not have. For this example we will<br>add some code that depends on whether or not the target platform has<br>the log and exp functions. Of course almost every platform has these<br>functions but for this tutorial assume that they are less common. If<br>the platform has log then we will use that to compute the square root<br>in the mysqrt function. We first test for the availability of these<br>functions using the CheckFunctionExists.cmake macro in the top level<br>CMakeLists file as follows:</p>
+</blockquote>
+<p>接下来让我们考虑在工程中添加一些代码，依赖目标平台上可能没有的特性。在这个例子中，我们将添加一些依赖于目标平台是否存在<code>log</code>和<code>exp</code>函数的代码。当然几乎所有的平台都有这些函数，但这个教程假设它们（这些函数）不常见。如果平台存在<code>log</code>，我们就在<code>mysqrt</code>中使用它来计算平方根。我们首先在顶级<code>CMakeLists</code>中使用<code>CheckFunctionExists.cmake</code>宏来测试这些函数的可用性：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+# does this system provide the log and exp functions?
+include (CheckFunctionExists.cmake)
+check_function_exists (log HAVE_LOG)
+check_function_exists (exp HAVE_EXP)
+</code></pre><blockquote>
+<p>Next we modify the TutorialConfig.h.in to define those values if CMake<br>found them on the platform as follows:</p>
+</blockquote>
+<p>接下来我们修改<code>TutorialConfig.h.in</code>，如果CMake在平台上找到他们（函数），就定义这些值：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+// does the platform provide exp and log functions?
+#cmakedefine HAVE_LOG
+#cmakedefine HAVE_EXP
+</code></pre><blockquote>
+<p>It is important that the tests for log and exp are done before the<br>configure_file command for TutorialConfig.h. The configure_file<br>command immediately configures the file using the current settings in<br>CMake. Finally in the mysqrt function we can provide an alternate<br>implementation based on log and exp if they are available on the<br>system using the following code:</p>
+</blockquote>
+<p>在为<code>TutorialConfig.h</code>执行<code>configure_file</code>命令之前完成对<code>log</code>和<code>exp</code>的测试非常重要。<code>configure_file</code>命令会使用CMake的当前设置立即配置这个文件。最后我们可以在<code>mysqrt</code>函数中提供基于<code>log</code>和<code>exp</code>的可选实现（如果他们在当前系统上可用）：</p>
+<pre><code>&lt;!-- lang: cpp --&gt;
+// if we have both log and exp then use them
+#if defined (HAVE_LOG) &amp;&amp; defined (HAVE_EXP)
+  result = exp(log(x)*0.5);
+#else // otherwise use an iterative approach
+  . . .
+</code></pre><h1 id="Adding-a-Generated-File-and-Generator-Step-5-添加生成的文件和生成器"><a href="#Adding-a-Generated-File-and-Generator-Step-5-添加生成的文件和生成器" class="headerlink" title="Adding a Generated File and Generator (Step 5) 添加生成的文件和生成器"></a>Adding a Generated File and Generator (Step 5) 添加生成的文件和生成器</h1><blockquote>
+<p>In this section we will show how you can add a generated source file<br>into the build process of an application. For this example we will<br>create a table of precomputed square roots as part of the build<br>process, and then compile that table into our application. To<br>accomplish this we first need a program that will generate the table.<br>In the MathFunctions subdirectory a new source file named<br>MakeTable.cxx will do just that.</p>
+</blockquote>
+<p>在这个单元中我们将为你展示如何在应用程序的构建过程中添加生成好的源文件。这个例子中我们将为构建过程造一个预计算平方根的表，然后将这个表编译进我们的应用程序。为了完成这个，我们首先需要一个可以生成这个表的程序。<code>MathFunctions</code>子目录下的<code>MakeTable.cxx</code>新源文件将完成这个工作：</p>
+<pre><code>&lt;!-- lang: cpp --&gt;
+// A simple program that builds a sqrt table 
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+
+int main (int argc, char *argv[])
+{
+  int i;
+  double result;
+
+  // make sure we have enough arguments
+  if (argc &lt; 2)
+    {
+    return 1;
+    }
+
+  // open the output file
+  FILE *fout = fopen(argv[1],&quot;w&quot;);
+  if (!fout)
+    {
+    return 1;
+    }
+
+  // create a source file with a table of square roots
+  fprintf(fout,&quot;double sqrtTable[] = {\n&quot;);
+  for (i = 0; i &lt; 10; ++i)
+    {
+    result = sqrt(static_cast&lt;double&gt;(i));
+    fprintf(fout,&quot;%g,\n&quot;,result);
+    }
+
+  // close the table with a zero
+  fprintf(fout,&quot;0};\n&quot;);
+  fclose(fout);
+  return 0;
+}
+</code></pre><blockquote>
+<p>Note that the table is produced as valid C++ code and that the name of<br>the file to write the output to is passed in as an argument. The next<br>step is to add the appropriate commands to MathFunctions’ CMakeLists<br>file to build the MakeTable executable, and then run it as part of the<br>build process. A few commands are needed to accomplish this, as shown<br>below.</p>
+</blockquote>
+<p>注意这个表格由C++代码产生，文件名作为参数传入以在里面输出结果。下一步是给<code>MathFunctions</code>的<code>CMakeLists</code>添加适当的命令来构建<code>MakeTable</code>程序。之后将作为构建过程的一部分来运行。需要很少的命令来完成这件事：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+# first we add the executable that generates the table
+add_executable(MakeTable MakeTable.cxx)
+
+# add the command to generate the source code
+add_custom_command (
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Table.h
+  COMMAND MakeTable ${CMAKE_CURRENT_BINARY_DIR}/Table.h
+  DEPENDS MakeTable
+  )
+
+# add the binary tree directory to the search path for 
+# include files
+include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
+
+# add the main library
+add_library(MathFunctions mysqrt.cxx ${CMAKE_CURRENT_BINARY_DIR}/Table.h  )
+</code></pre><blockquote>
+<p>First the executable for MakeTable is added as any other executable<br>would be added. Then we add a custom command that specifies how to<br>produce Table.h by running MakeTable. Next we have to let CMake know<br>that mysqrt.cxx depends on the generated file Table.h. This is done by<br>adding the generated Table.h to the list of sources for the library<br>MathFunctions. We also have to add the current binary directory to the<br>list of include directories so that Table.h can be found and included<br>by mysqrt.cxx. When this project is built it will first build the<br>MakeTable executable. It will then run MakeTable to produce Table.h.<br>Finally, it will compile mysqrt.cxx which includes Table.h to produce<br>the MathFunctions library. At this point the top level CMakeLists file<br>with all the features we have added looks like the following:</p>
+</blockquote>
+<p>首先，<code>MakeTable</code>像其他任何一个可执行程序一样被添加进入。然后，我们添加一个定制的命令来指定如何运行<code>MakeTable</code>来产生<code>Table.h</code>。之后，我们必须让CMake知道<code>mysqrt.cxx</code>依赖生成的<code>Table.h</code>文件。将生成的<code>Table.h</code>添加到<code>MathFunctions</code>源代码列表中来搞定它。同时我们也必须将当前二进制目录添加到包含目录列表中，使得<code>Table.h</code>可以被找到，以及被<code>mysqrt.cxx</code>包含。</p>
+<p>但工程开始构建时，他首先会构建<code>MakeTable</code>程序，然后执行<code>MakeTable</code>来产生<code>Table.h</code>。最后，他会编译包含了<code>Table.h</code>的<code>mysqrt.cxx</code>来生成<code>MathFunctions</code>库。</p>
+<p>至此，顶层的CMakeLists文件包含了我们之前添加的所有特性：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+cmake_minimum_required (VERSION 2.6)
+project (Tutorial)
+
+# The version number.
+set (Tutorial_VERSION_MAJOR 1)
+set (Tutorial_VERSION_MINOR 0)
+
+# does this system provide the log and exp functions?
+include (${CMAKE_ROOT}/Modules/CheckFunctionExists.cmake)
+
+check_function_exists (log HAVE_LOG)
+check_function_exists (exp HAVE_EXP)
+
+# should we use our own math functions
+option(USE_MYMATH 
+  &quot;Use tutorial provided math implementation&quot; ON)
+
+# configure a header file to pass some of the CMake settings
+# to the source code
+configure_file (
+  &quot;${PROJECT_SOURCE_DIR}/TutorialConfig.h.in&quot;
+  &quot;${PROJECT_BINARY_DIR}/TutorialConfig.h&quot;
+  )
+
+# add the binary tree to the search path for include files
+# so that we will find TutorialConfig.h
+include_directories (&quot;${PROJECT_BINARY_DIR}&quot;)
+
+# add the MathFunctions library?
+if (USE_MYMATH)
+  include_directories (&quot;${PROJECT_SOURCE_DIR}/MathFunctions&quot;)
+  add_subdirectory (MathFunctions)
+  set (EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
+endif (USE_MYMATH)
+
+# add the executable
+add_executable (Tutorial tutorial.cxx)
+target_link_libraries (Tutorial  ${EXTRA_LIBS})
+
+# add the install targets
+install (TARGETS Tutorial DESTINATION bin)
+install (FILES &quot;${PROJECT_BINARY_DIR}/TutorialConfig.h&quot;        
+         DESTINATION include)
+
+# does the application run
+add_test (TutorialRuns Tutorial 25)
+
+# does the usage message work?
+add_test (TutorialUsage Tutorial)
+set_tests_properties (TutorialUsage
+  PROPERTIES 
+  PASS_REGULAR_EXPRESSION &quot;Usage:.*number&quot;
+  )
+
+
+#define a macro to simplify adding tests
+macro (do_test arg result)
+  add_test (TutorialComp${arg} Tutorial ${arg})
+  set_tests_properties (TutorialComp${arg}
+    PROPERTIES PASS_REGULAR_EXPRESSION ${result}
+    )
+endmacro (do_test)
+
+# do a bunch of result based tests
+do_test (4 &quot;4 is 2&quot;)
+do_test (9 &quot;9 is 3&quot;)
+do_test (5 &quot;5 is 2.236&quot;)
+do_test (7 &quot;7 is 2.645&quot;)
+do_test (25 &quot;25 is 5&quot;)
+do_test (-25 &quot;-25 is 0&quot;)
+do_test (0.0001 &quot;0.0001 is 0.01&quot;)
+</code></pre><blockquote>
+<p>TutorialConfig.h looks like:</p>
+</blockquote>
+<p><code>TutorialConfig.h</code>如下：</p>
+<pre><code>&lt;!-- lang: cpp --&gt;
+// the configured options and settings for Tutorial
+#define Tutorial_VERSION_MAJOR @Tutorial_VERSION_MAJOR@
+#define Tutorial_VERSION_MINOR @Tutorial_VERSION_MINOR@
+#cmakedefine USE_MYMATH
+
+// does the platform provide exp and log functions?
+#cmakedefine HAVE_LOG
+#cmakedefine HAVE_EXP
+</code></pre><blockquote>
+<p>And the CMakeLists file for MathFunctions looks like:</p>
+</blockquote>
+<p><code>MathFunctions</code>的<code>CMakeLists</code>如下：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+# first we add the executable that generates the table
+add_executable(MakeTable MakeTable.cxx)
+# add the command to generate the source code
+add_custom_command (
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Table.h
+  DEPENDS MakeTable
+  COMMAND MakeTable ${CMAKE_CURRENT_BINARY_DIR}/Table.h
+  )
+# add the binary tree directory to the search path 
+# for include files
+include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
+
+# add the main library
+add_library(MathFunctions mysqrt.cxx ${CMAKE_CURRENT_BINARY_DIR}/Table.h)
+
+install (TARGETS MathFunctions DESTINATION bin)
+install (FILES MathFunctions.h DESTINATION include)
+</code></pre><h1 id="Building-an-Installer-Step-6-构建一个安装程序"><a href="#Building-an-Installer-Step-6-构建一个安装程序" class="headerlink" title="Building an Installer (Step 6) 构建一个安装程序"></a>Building an Installer (Step 6) 构建一个安装程序</h1><blockquote>
+<p>Next suppose that we want to distribute our project to other people so<br>that they can use it. We want to provide both binary and source<br>distributions on a variety of platforms. This is a little different<br>from the instal we did previously in section Installing and Testing<br>(Step 3), where we were installing the binaries that we had built from<br>the source code. In this example we will be building installation<br>packages that support binary installations and package management<br>features as found in cygwin, debian, RPMs etc. To accomplish this we<br>will use CPack to create platform specific installers as described in<br>Chapter Packaging with CPack. Specifically we need to add a few lines<br>to the bottom of our toplevel CMakeLists.txt file.</p>
+</blockquote>
+<p>下面假设我们想发布我们的工程给其他人使用。我们想同时在多个平台上提供二进制程序和源代码。这和我们之前在第三部分<code>Installing and Testing</code>中做的安装（从源代码构建安装）有一点不同。这个例子中，我们将构建一个支持二进制安装和包管理特性的安装包，就像在<code>cygwin</code>、<code>debian</code>、<code>RPM</code>中找到的安装包一样。为了完成这件事，我们将利用在章节<code>Packaging with CPack</code>提到的<code>CPack</code>制作指定平台的安装程序。特别地，我们需要在顶层<code>CMakeLists</code>下面添加几行：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+# build a CPack driven installer package
+include (InstallRequiredSystemLibraries)
+set (CPACK_RESOURCE_FILE_LICENSE  
+     &quot;${CMAKE_CURRENT_SOURCE_DIR}/License.txt&quot;)
+set (CPACK_PACKAGE_VERSION_MAJOR &quot;${Tutorial_VERSION_MAJOR}&quot;)
+set (CPACK_PACKAGE_VERSION_MINOR &quot;${Tutorial_VERSION_MINOR}&quot;)
+include (CPack)
+</code></pre><blockquote>
+<p>That is all there is to it. We start by including<br>InstallRequiredSystemLibraries. This module will include any runtime<br>libraries that are needed by the project for the current platform.<br>Next we set some CPack variables to where we have stored the license<br>and version information for this project. The version information<br>makes use of the variables we set earlier in this tutorial. Finally we<br>include the CPack module which will use these variables and some other<br>properties of the system you are on to setup an installer. The next<br>step is to build the project in the usual manner and then run CPack on<br>it. To build a binary distribution you would run:</p>
+</blockquote>
+<p>就是这样，先包含<code>InstallRequiredSystemLibraries</code>。这个模块将包含工程在当前平台需要的任何运行库。然后，我们设置一些<code>CPack</code>变量指向工程存放<code>license</code>和<code>version</code>信息的地方。版本信息利用了我们之前在教程里设置的变量。最后，我们包含的<code>CPack</code>模块将会使用这些变量，以及你所在系统的其他一些属性，来制作一个安装包。</p>
+<p>下一步是按照平常的方式构建工程然后启动<code>CPack</code>。要发布一个二进制版，你需要执行：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+cpack -C CPackConfig.cmake
+</code></pre><blockquote>
+<p>To create a source distribution you would type</p>
+</blockquote>
+<p>要发布源代码，你需要执行：</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+cpack -C CPackSourceConfig.cmake
+</code></pre><h1 id="Adding-Support-for-a-Dashboard-Step-7-添加面板支持"><a href="#Adding-Support-for-a-Dashboard-Step-7-添加面板支持" class="headerlink" title="Adding Support for a Dashboard (Step 7)  添加面板支持"></a>Adding Support for a Dashboard (Step 7)  添加面板支持</h1><blockquote>
+<p>Adding support for submitting our test results to a dashboard is very<br>easy. We already defined a number of tests for our project in the<br>earlier steps of this tutorial. We just have to run those tests and<br>submit them to a dashboard. To include support for dashboards we<br>include the CTest module in our toplevel CMakeLists file.</p>
+</blockquote>
+<p>为提交我们的测试结果添加面板支持十分简单。在之前的教程中，我们已经为工程定义了很多测试。我们仅仅需要执行这些测试以及把它们提交到面板。要包含面板支持我们需要在顶层<code>CMakeLists</code>中包含<code>CTest</code>模块。</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+# enable dashboard scripting
+include (CTest)
+</code></pre><blockquote>
+<p>We also create a CTestConfig.cmake file where we can specify the name<br>of this project for the dashboard.</p>
+</blockquote>
+<p>我们还为面板写了一个可以指定工程名的<code>CTestConfig.cmake</code>文件。</p>
+<pre><code>&lt;!-- lang: shell --&gt;
+set (CTEST_PROJECT_NAME &quot;Tutorial&quot;)
+</code></pre><blockquote>
+<p>CTest will read in this file when it runs. To create a simple<br>dashboard you can run CMake on your project, change directory to the<br>binary tree, and then run ctest –D Experimental. The results of your<br>dashboard will be uploaded to Kitware’s public dashboard here.</p>
+</blockquote>
+<p><code>CTest</code>将在运行时读取这个文件。要创建一个简单的面板，你可以在你的工程里运行CMake，将目录改变到二进制树，然后执行实验性的<code>ctest -D</code>。你面板上的结果将会被上传到<code>Kitware</code>的<a href="http://www.cdash.org/CDash/index.php?project=PublicDashboard" target="_blank" rel="noopener">公开面板</a>。</p>
+<h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>由于本人水平所限，译文和原文内容难免存在差异，甚至错误，还请各位读者评批指出！谢谢！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Micooz Lee
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://apporz.com/2015/01/08/cmake-tutorial-translation/" title="CMake官方Tutorial中英对照翻译">https://apporz.com/2015/01/08/cmake-tutorial-translation/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tech/" rel="tag"># tech</a>
+          
+            <a href="/tags/cmake/" rel="tag"># cmake</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/01/02/cpp-encoding-problem/" rel="next" title="C++ 字符编码问题探究和中文乱码的产生">
+                <i class="fa fa-chevron-left"></i> C++ 字符编码问题探究和中文乱码的产生
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/02/23/google-cpp-style-guide-note/" rel="prev" title="Google C++ Style Guide 笔记">
+                Google C++ Style Guide 笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/master.portrait.png"
+                alt="Micooz Lee" />
+            
+              <p class="site-author-name" itemprop="name">Micooz Lee</p>
+              <p class="site-description motion-element" itemprop="description">FullStack JavaScript Engineer</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/micooz" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:micooz@hotmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/MicoozLee" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://instagram.com/micoozlee" target="_blank" title="Instagram">
+                    
+                      <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-globe"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://flag.moe" title="哞菇菌" target="_blank">哞菇菌</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://haipz.com" title="海胖博客" target="_blank">海胖博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.otokaze.cn" title="音風の部屋" target="_blank">音風の部屋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.anotherhome.net" title="DIYgod" target="_blank">DIYgod</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.0xbbc.com" title="BlueCocoa" target="_blank">BlueCocoa</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://windisco.com" title="ShinCurry" target="_blank">ShinCurry</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://codelover.link" title="codelover" target="_blank">codelover</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.chionlab.moe" title="ChionTang" target="_blank">ChionTang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://rakume.com/#!/home" title="Rakume Hayashi" target="_blank">Rakume Hayashi</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://src.moe" title="POJO" target="_blank">POJO</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CMake-Tutorial"><span class="nav-number">1.</span> <span class="nav-text"><a href="#CMake-Tutorial" class="headerlink" title="CMake Tutorial"></a>CMake Tutorial</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A-Basic-Starting-Point-Step1-简单的开始"><span class="nav-number">2.</span> <span class="nav-text"><a href="#A-Basic-Starting-Point-Step1-&#x7B80;&#x5355;&#x7684;&#x5F00;&#x59CB;" class="headerlink" title="A Basic Starting Point (Step1)  &#x7B80;&#x5355;&#x7684;&#x5F00;&#x59CB;"></a>A Basic Starting Point (Step1)  &#x7B80;&#x5355;&#x7684;&#x5F00;&#x59CB;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Adding-a-Version-Number-and-Configured-Header-File-添加一个版本号和用于配置的头文件"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#Adding-a-Version-Number-and-Configured-Header-File-&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x53F7;&#x548C;&#x7528;&#x4E8E;&#x914D;&#x7F6E;&#x7684;&#x5934;&#x6587;&#x4EF6;" class="headerlink" title="Adding a Version Number and Configured Header File &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x53F7;&#x548C;&#x7528;&#x4E8E;&#x914D;&#x7F6E;&#x7684;&#x5934;&#x6587;&#x4EF6;"></a>Adding a Version Number and Configured Header File &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x53F7;&#x548C;&#x7528;&#x4E8E;&#x914D;&#x7F6E;&#x7684;&#x5934;&#x6587;&#x4EF6;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adding-a-Library-Step-2-添加一个库"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Adding-a-Library-Step-2-&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5E93;" class="headerlink" title="Adding a Library (Step 2) &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5E93;"></a>Adding a Library (Step 2) &#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5E93;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Installing-and-Testing-Step-3-安装和测试"><span class="nav-number">4.</span> <span class="nav-text"><a href="#Installing-and-Testing-Step-3-&#x5B89;&#x88C5;&#x548C;&#x6D4B;&#x8BD5;" class="headerlink" title="Installing and Testing (Step 3) &#x5B89;&#x88C5;&#x548C;&#x6D4B;&#x8BD5;"></a>Installing and Testing (Step 3) &#x5B89;&#x88C5;&#x548C;&#x6D4B;&#x8BD5;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adding-System-Introspection-Step-4-添加系统反馈"><span class="nav-number">5.</span> <span class="nav-text"><a href="#Adding-System-Introspection-Step-4-&#x6DFB;&#x52A0;&#x7CFB;&#x7EDF;&#x53CD;&#x9988;" class="headerlink" title="Adding System Introspection (Step 4) &#x6DFB;&#x52A0;&#x7CFB;&#x7EDF;&#x53CD;&#x9988;"></a>Adding System Introspection (Step 4) &#x6DFB;&#x52A0;&#x7CFB;&#x7EDF;&#x53CD;&#x9988;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adding-a-Generated-File-and-Generator-Step-5-添加生成的文件和生成器"><span class="nav-number">6.</span> <span class="nav-text"><a href="#Adding-a-Generated-File-and-Generator-Step-5-&#x6DFB;&#x52A0;&#x751F;&#x6210;&#x7684;&#x6587;&#x4EF6;&#x548C;&#x751F;&#x6210;&#x5668;" class="headerlink" title="Adding a Generated File and Generator (Step 5) &#x6DFB;&#x52A0;&#x751F;&#x6210;&#x7684;&#x6587;&#x4EF6;&#x548C;&#x751F;&#x6210;&#x5668;"></a>Adding a Generated File and Generator (Step 5) &#x6DFB;&#x52A0;&#x751F;&#x6210;&#x7684;&#x6587;&#x4EF6;&#x548C;&#x751F;&#x6210;&#x5668;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Building-an-Installer-Step-6-构建一个安装程序"><span class="nav-number">7.</span> <span class="nav-text"><a href="#Building-an-Installer-Step-6-&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x5B89;&#x88C5;&#x7A0B;&#x5E8F;" class="headerlink" title="Building an Installer (Step 6) &#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x5B89;&#x88C5;&#x7A0B;&#x5E8F;"></a>Building an Installer (Step 6) &#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x5B89;&#x88C5;&#x7A0B;&#x5E8F;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Adding-Support-for-a-Dashboard-Step-7-添加面板支持"><span class="nav-number">8.</span> <span class="nav-text"><a href="#Adding-Support-for-a-Dashboard-Step-7-&#x6DFB;&#x52A0;&#x9762;&#x677F;&#x652F;&#x6301;" class="headerlink" title="Adding Support for a Dashboard (Step 7)  &#x6DFB;&#x52A0;&#x9762;&#x677F;&#x652F;&#x6301;"></a>Adding Support for a Dashboard (Step 7)  &#x6DFB;&#x52A0;&#x9762;&#x677F;&#x652F;&#x6301;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结束语"><span class="nav-number">9.</span> <span class="nav-text"><a href="#&#x7ED3;&#x675F;&#x8BED;" class="headerlink" title="&#x7ED3;&#x675F;&#x8BED;"></a>&#x7ED3;&#x675F;&#x8BED;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Micooz Lee</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://micooz.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://apporz.com/2015/01/08/cmake-tutorial-translation/';
+          this.page.identifier = '2015/01/08/cmake-tutorial-translation/';
+          this.page.title = 'CMake官方Tutorial中英对照翻译';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://micooz.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+</body>
+</html>
