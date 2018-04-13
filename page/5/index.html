@@ -1,286 +1,204 @@
-<!DOCTYPE html>
-
-
-
-
-<html class="theme-next pisces" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/uploads/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Micooz" type="application/atom+xml" />
-
-
-
-
-
-
-<meta name="description" content="FullStack JavaScript Engineer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Micooz">
-<meta property="og:url" content="https://apporz.com/page/5/index.html">
-<meta property="og:site_name" content="Micooz">
-<meta property="og:description" content="FullStack JavaScript Engineer">
-<meta property="og:locale" content="en">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Micooz">
-<meta name="twitter:description" content="FullStack JavaScript Engineer">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="https://apporz.com/page/5/"/>
-
-
-
-
-
-  <title>Micooz</title>
-  
-
-
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-72182315-1', 'auto');
-  ga('send', 'pageview');
-</script>
-
-
-
-
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Micooz</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">Make something different!</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
+<!DOCTYPE html><html class="theme-next pisces" lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/uploads/apple-touch-icon.png?v=6.1.0"><link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon-32x32.png?v=6.1.0"><link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon-16x16.png?v=6.1.0"><link rel="mask-icon" href="/uploads/logo.svg?v=6.1.0" color="#222"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Pisces",version:"6.1.0",sidebar:{position:"left",display:"post",offset:12,b2t:!1,scrollpercent:!0,onmobile:!1},fancybox:!1,fastclick:!1,lazyload:!1,tabs:!0,motion:{enable:!1,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><meta name="description" content="FullStack JavaScript Engineer"><meta property="og:type" content="website"><meta property="og:title" content="Micooz"><meta property="og:url" content="https://apporz.com/page/5/index.html"><meta property="og:site_name" content="Micooz"><meta property="og:description" content="FullStack JavaScript Engineer"><meta property="og:locale" content="en"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Micooz"><meta name="twitter:description" content="FullStack JavaScript Engineer"><link rel="alternate" href="/atom.xml" title="Micooz" type="application/atom+xml"><link rel="canonical" href="https://apporz.com/page/5/"><script type="text/javascript" id="page.configurations">CONFIG.page={sidebar:""}</script><title>Micooz</title><script async src="https://www.googletagmanager.com/gtag/js?id=UA-72182315-1"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-72182315-1")</script><noscript><style type="text/css">.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="en"><div class="container sidebar-position-left page-home"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Micooz</span> <span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">Make something different!</p></div><div class="site-nav-toggle"><button aria-label="Toggle navigation bar"><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i> </span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"><input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><section id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://apporz.com/2013/07/27/cpp-function-call-5/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Micooz Lee"><meta itemprop="description" content=""><meta itemprop="image" content="/uploads/master.portrait.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Micooz"></span><header class="post-header"><h1 class="post-title" itemprop="name headline"><a class="post-title-link" href="/2013/07/27/cpp-function-call-5/" itemprop="url">【汇编】C++ 函数调用之——有参有返回调用</a></h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-27T00:00:01+08:00">2013-07-27</time> </span><span class="post-comments-count"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-comment-o"></i> </span><a href="/2013/07/27/cpp-function-call-5/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/27/cpp-function-call-5/" itemprop="commentCount"></span></a></span></div></header><div class="post-body" itemprop="articleBody"><p>大多数函数都通过return语句返回一个值，那么被调函数是如何返回的，主调函数又是如何接受的呢？下面让我们来一探究竟。</p><p>有测试代码：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//call func</span></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	x=func(<span class="number">10</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码很简单，调用函数func向其传递参数10，然后函数返回10+1=11，并保存到变量x中。</p>
+<p>对应有汇编代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//call func</span></span><br><span class="line">	<span class="keyword">int</span> x;</span><br><span class="line">	x=func(<span class="number">10</span>);</span><br><span class="line"><span class="number">001</span>A142E  push        <span class="number">0</span>Ah  </span><br><span class="line"><span class="number">001</span>A1430  call        <span class="number">001</span>A11F4  </span><br><span class="line"><span class="number">001</span>A1435  add         esp,<span class="number">4</span>  </span><br><span class="line"><span class="number">001</span>A1438  mov         dword ptr [ebp<span class="number">-8</span>],eax</span><br></pre></td></tr></table></figure>
+<p>正如前几篇所讲的函数调用，这里的汇编流程几乎和前面一样，只是这里要接受一个返回值。</p>
+<p>重点在最后一个mov指令，他将寄存器eax的内容传送进内存单元[ebp-8]，这个内存单元在main的栈内，其实就是变量x，这个mov显然是为x赋值，赋的是eax。</p>
+<p>可以猜测，<strong>函数func的返回值是放在了寄存器eax中</strong>。</p>
+<p>下面为了验证上面的猜想，我们看看func的汇编实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> a+<span class="number">1</span>;</span><br><span class="line"><span class="number">001</span>A13EE  mov         eax,dword ptr [ebp+<span class="number">8</span>]  </span><br><span class="line"><span class="number">001</span>A13F1  add         eax,<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>内存单元[ebp+8]在函数func参数表中，即是参数a，mov指令将参数a传送到eax中<br>add指令将eax的内容加1，似乎并没有所谓的return返回，其实真正意义上的返回是通过ret指令实现的，ret指令将进行一个pop ip；执行之后就返回到了调用func的下一条指令的地方。</p>
+<p>现在应该容易理解了，自定义函数的返回值一般是放在eax中的，其实早在<a href="/2013/07/25/cpp-main-asm/" title="【汇编】C++ Win32ConsoleApp main函数的构造分析">【汇编】C++ Win32ConsoleApp main函数的构造分析</a>的时候就提到过：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="comment">//将返回值eax清空</span></span><br><span class="line"><span class="number">00B</span>413BE  xor         eax,eax</span><br></pre></td></tr></table></figure>
+<p>函数通过return语句只能返回一个值，这个值大多数情况下放在eax中。所以在调用别的函数时，只要调用完成之后及时把eax的内容取出来就行了。</p>
           
-            <a href="javascript:;" class="popup-trigger">
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://apporz.com/2013/07/27/cpp-array-initialization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Micooz Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/master.portrait.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Micooz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/07/27/cpp-array-initialization/" itemprop="url">
+                  【汇编】C++ 中的数组初始化的实现
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+                
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-27T00:00:00+08:00">2013-07-27</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/07/27/cpp-array-initialization/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/27/cpp-array-initialization/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
-            Search
-          </a>
-        </li>
-      
-    </ul>
-  
+          
 
-  
-    <div class="site-search">
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
+      
+
+      
+        
+          
+            <p>我们已经知道，数组存放一组数据类型相同的变量，各个变量连续存放，地址由低到高。</p><p>如整形数组：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> s[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>有5个元素。</p>
+<p>对应有汇编码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> s[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="number">00B</span>917BE  mov         dword ptr [ebp<span class="number">-18</span>h],<span class="number">1</span>  </span><br><span class="line"><span class="number">00B</span>917C5  mov         dword ptr [ebp<span class="number">-14</span>h],<span class="number">2</span>  </span><br><span class="line"><span class="number">00B</span>917CC  mov         dword ptr [ebp<span class="number">-10</span>h],<span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>917D3  mov         dword ptr [ebp<span class="number">-0</span>Ch],<span class="number">4</span>  </span><br><span class="line"><span class="number">00B</span>917DA  mov         dword ptr [ebp<span class="number">-8</span>],<span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p>可以看到5个元素有5条mov指令对每个元素进行初始化，地址从低到高，其中ebp是main的栈底，查看内存如下：</p>
+<p><img src="123107_G17V_580940.png" alt=""></p>
+<p>可以看到确实是连续存放的。</p>
+<p>如果这样初始化呢？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> s[<span class="number">5</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="number">00</span>EA17BE  mov         dword ptr [ebp<span class="number">-18</span>h],<span class="number">0</span>  </span><br><span class="line"><span class="number">00</span>EA17C5  xor         eax,eax  </span><br><span class="line"><span class="number">00</span>EA17C7  mov         dword ptr [ebp<span class="number">-14</span>h],eax  </span><br><span class="line"><span class="number">00</span>EA17CA  mov         dword ptr [ebp<span class="number">-10</span>h],eax  </span><br><span class="line"><span class="number">00</span>EA17CD  mov         dword ptr [ebp<span class="number">-0</span>Ch],eax  </span><br><span class="line"><span class="number">00</span>EA17D0  mov         dword ptr [ebp<span class="number">-8</span>],eax</span><br><span class="line">比较有意思的是先把第一个元素清<span class="number">0</span>，然后再用eax去初始化其他元素，这样做可能是为了效率吧。</span><br><span class="line">有另一个问题，就是我们常常要用到一个比较大的缓冲区，比如：</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> buffer[<span class="number">1024</span>]; 这样的话难道会像上面一样有 <span class="number">1024</span>个mov吗？答案肯定否定的。</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> s[<span class="number">100</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="number">000717B</span>E  mov         dword ptr [ebp+FFFFFE6Ch],<span class="number">0</span>  </span><br><span class="line"><span class="comment">//首先将s的第一个元素清0</span></span><br><span class="line"><span class="number">000717</span>C8  push        <span class="number">18</span>Ch  </span><br><span class="line"><span class="comment">//再将18c压栈，这个 18c = (100-1)*sizeof(int)，就是数组的字节长度少4</span></span><br><span class="line"><span class="comment">//因为第一个元素已经初始化过了</span></span><br><span class="line"><span class="number">000717</span>CD  push        <span class="number">0</span>  </span><br><span class="line"><span class="comment">//将0压栈</span></span><br><span class="line"><span class="number">000717</span>CF  lea         eax,[ebp+FFFFFE70h]  </span><br><span class="line"><span class="number">000717</span>D5  push        eax  </span><br><span class="line"><span class="comment">//把地址ebp+FFFFFE70h压栈</span></span><br><span class="line"><span class="comment">//上面的三个push应该是为这个call做准备，可以知道这个call有三个参数，那这个call究竟是是什么呢？</span></span><br><span class="line"><span class="number">000717</span>D6  call        <span class="number">000711E0</span>  </span><br><span class="line"><span class="comment">//找到跳转表看看：</span></span><br><span class="line">################</span><br><span class="line">_memset:</span><br><span class="line"><span class="number">000711E0</span>  jmp         <span class="number">000713F</span>A  </span><br><span class="line"><span class="number">000711E5</span>  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">000711E6</span>  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line">实际上那个call调用了<span class="built_in">memset</span>函数，但是我们并没有引入任何头文件，我猜想是编译器自动引入了<span class="built_in">string</span>头文件。</span><br><span class="line">还记得上面的push吗？</span><br><span class="line">push <span class="number">396</span></span><br><span class="line">push <span class="number">0</span></span><br><span class="line">push &amp;s[<span class="number">0</span>]</span><br><span class="line">换成高级语言就是 <span class="built_in">memset</span>(&amp;s[<span class="number">0</span>],<span class="number">0</span>,<span class="number">396</span>)，很明显是一个初始化一段内存的操作</span><br><span class="line">################</span><br><span class="line"><span class="number">000717</span>DB  add         esp,<span class="number">0</span>Ch  <span class="comment">//三个参数，三个DWORD=Ch</span></span><br></pre></td></tr></table></figure>
+<p>看来编译器很是聪明，知道这个时候调用函数来完成初始化操作。当然如果不在声明时初始化数组，那么我们自己也可以直接：</p>
+<p>memset(s,0,sizeof(s))</p>
+          
+        
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
   
-</nav>
+  
+  
+  </article>
 
 
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
     
       
 
@@ -288,6 +206,636 @@
 
   
   
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://apporz.com/2013/07/27/cpp-function-call-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Micooz Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/master.portrait.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Micooz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/07/27/cpp-function-call-4/" itemprop="url">
+                  【汇编】C++ 函数调用之——有参无返回调用（传引用）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+                
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-27T00:00:00+08:00">2013-07-27</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/07/27/cpp-function-call-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/27/cpp-function-call-4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol><li><a href="/2013/07/26/cpp-function-call-2/" title="【汇编】C++ 函数调用之——有参无返回调用（传值）">【汇编】C++ 函数调用之——有参无返回调用（传值）</a></li><li><a href="/2013/07/26/cpp-function-call-3/" title="【汇编】C++ 函数调用之——有参无返回调用（传指针）">【汇编】C++ 函数调用之——有参无返回调用（传指针）</a></li></ol><p>传引用调用函数，就是向被调函数传递的是一个引用类型，而引用是作为变量的别名存在，本质上同样是一个地址。</p><p>有源代码：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> &amp;b)</span></span>&#123;</span><br><span class="line">	b=<span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//call func</span></span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">	func(a);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此代码向func函数传递一个局部变量a的引用，从而修改这个a的值。</p>
+<p>对应有汇编码：</p>
+<p>main中，</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//call func</span></span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">	func(a);</span><br><span class="line"><span class="number">00931438</span>  lea         eax,[ebp<span class="number">-0</span>Ch]  </span><br><span class="line"><span class="number">0093143B</span>  push        eax  </span><br><span class="line"><span class="number">0093143</span>C  call        <span class="number">009311E5</span>  </span><br><span class="line"><span class="number">00931441</span>  add         esp,<span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>可见和传递指针一样，push进去的是a的地址&amp;a</p>
+<p>func中，</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b=<span class="number">10</span>;</span><br><span class="line"><span class="number">009313</span>EE  mov         eax,dword ptr [ebp+<span class="number">8</span>]  </span><br><span class="line"><span class="number">009313F</span>1  mov         dword ptr [eax],<span class="number">0</span>Ah</span><br></pre></td></tr></table></figure>
+<p>同样，和指针实现并没有任何区别。</p>
+<p>小结：传递引用其实是通过指针实现的，传递的是地址，而不是对象的拷贝。</p>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://apporz.com/2013/07/26/cpp-function-call-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Micooz Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/master.portrait.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Micooz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/07/26/cpp-function-call-3/" itemprop="url">
+                  【汇编】C++ 函数调用之——有参无返回调用（传指针）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+                
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-26T00:00:03+08:00">2013-07-26</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/07/26/cpp-function-call-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/26/cpp-function-call-3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol><li><a href="/2013/07/26/cpp-function-call-2/" title="【汇编】C++ 函数调用之——有参无返回调用（传值）">【汇编】C++ 函数调用之——有参无返回调用（传值）</a></li></ol><p>传地址调用函数顾名思义，就是向被调函数传递的是一个地址值，而不是数据内容，这个地址通常是一个32位无符号整数，表示为十六进制就是形如：0x???? ????，在实际内存中是以(DWORD)形式存放 ，这就是指针类型在内存中通常占用4字节的原因。</p><p>有源代码：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> *b)</span></span>&#123;</span><br><span class="line">	*b=<span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//call func</span></span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">	func(&amp;a);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码就是通过func函数修改main函数的一个局部变量a。</p>
+<p>main函数中对应的汇编码如下所示：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//call func</span></span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line">func(&amp;a);</span><br><span class="line"><span class="number">00911438</span>  lea         eax,[ebp<span class="number">-0</span>Ch]  </span><br><span class="line"><span class="number">0091143B</span>  push        eax  </span><br><span class="line"><span class="number">0091143</span>C  call        <span class="number">009111</span>D1  </span><br><span class="line"><span class="number">00911441</span>  add         esp,<span class="number">4</span>  </span><br><span class="line"><span class="comment">//可以看到，传指针时，有一个lea指令，该指令是将局部变量a的地址也就是ebp-0ch传送给寄存器eax</span></span><br><span class="line"><span class="comment">//然后将eax压栈，换句话说压栈的内容是&amp;a(ebp-0ch)</span></span><br><span class="line"><span class="comment">//后续操作和之前介绍的传值调用一致</span></span><br></pre></td></tr></table></figure>
+<p>为了更直观一些，我们在内存窗口查看这个地址放在哪儿了。然后由这个地址找到a所在内存单元，看是不是0xCCCCCCCC(请参考)</p>
+<p>&amp;a=0x0109FEE0</p>
+<p><img src="222327_DHf0_580940.png" alt=""></p>
+<p>PUSH &amp;a</p>
+<p><img src="222641_Q3MC_580940.png" alt=""></p>
+<p>再看看func函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*b=<span class="number">10</span>;</span><br><span class="line"><span class="number">009113</span>EE  mov         eax,dword ptr [ebp+<span class="number">8</span>]  </span><br><span class="line"><span class="comment">//从栈底偏移+8处取出调用时push的&amp;a，从内存中也可以看出正好是放在那里的</span></span><br><span class="line"><span class="number">009113F</span>1  mov         dword ptr [eax],<span class="number">0</span>Ah</span><br><span class="line"><span class="comment">//注意这里eax存的是&amp;a，作为地址然后找到对应的内存单元，向里面传送10，就是实现了*b=10</span></span><br></pre></td></tr></table></figure>
+<p>内存中是怎么样的呢？</p>
+<p>0x0109FEE0处：</p>
+<p><img src="223416_cF9h_580940.png" alt=""></p>
+<p>可以看到确实变成了0a</p>
+<p>和传值调用唯一的不同就是参数压栈时压的是地址而已。</p>
+<p>如果需要向函数传一个对象，而这个对象占用很大的一块内存，如果使用传值方式，则需要在被调函数栈底下面(参数表)push一个对象，相当于完全拷贝这个对象，占用同样的内存空间。</p>
+<p>而如果使用传指针，那么仅仅需要push一个4字节的地址值而已，对象没有发生拷贝，大大节省了内存和时间。这就是使用指针的高效处。</p>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://apporz.com/2013/07/26/cpp-function-call-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Micooz Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/master.portrait.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Micooz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/07/26/cpp-function-call-2/" itemprop="url">
+                  【汇编】C++ 函数调用之——有参无返回调用（传值）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+                
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-26T00:00:02+08:00">2013-07-26</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/07/26/cpp-function-call-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/26/cpp-function-call-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>C++函数有参调用有几种传参方式：</p><ol><li>传值</li><li>传指针（地址）</li><li>传引用</li></ol><p>其中参数可被const修饰，也可以有默认值。下面分情况讨论：</p><p>为了简洁，省略main函数的汇编码而直接给出func函数的汇编码。</p><p>有源代码：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">char</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> c;</span><br><span class="line">	c=a+b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//call func</span></span><br><span class="line">	func(<span class="number">10</span>,<span class="string">'a'</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面看看汇编码：</p>
+<p>调用发生时：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//call func</span></span><br><span class="line">	func(<span class="number">10</span>,<span class="string">'a'</span>);</span><br><span class="line"><span class="comment">//进行参数压栈操作，首先是'a'压入栈，然后是10压栈，然后call跳转表，再由调转表call函数</span></span><br><span class="line"><span class="number">00F</span>1141E  push        <span class="number">61</span>h  </span><br><span class="line"><span class="number">00F</span>11420  push        <span class="number">0</span>Ah  </span><br><span class="line"><span class="number">00F</span>11422  call        <span class="number">00F</span>1113B  </span><br><span class="line"><span class="comment">//函数调用完成后，栈减小8字节，两个dword，因为CPU对栈的操作都是双字操作，这里两个参数就是两个双字</span></span><br><span class="line"><span class="number">00F</span>11427  add         esp,<span class="number">8</span></span><br></pre></td></tr></table></figure>
+<p>具体内存中的表现是这样的（先让func把栈初始化）：</p>
+<p><img src="124421_kiVQ_580940.png" alt=""></p>
+<p>显然不在func的stack内，注意两个参数前面还有两个DWORD，</p>
+<p>一个是00f1 1427,另一个是00dd f794；这两个DWORD的产生应该是在PUSH两个参数之后，</p>
+<p>又有的两个PUSH，显然，第一个PUSH 00f1 1427是在call 时将ip压栈导致的：</p>
+<p>这个ip是当前这条call 指令的下一条指令(add)的地址，请参考上面的main函数。</p>
+<p>第二个PUSH是在 func函数中完成的，可以参考func函数的汇编码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">char</span> b)</span></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="number">00F</span>113D0  push        ebp  </span><br><span class="line"><span class="comment">//这里第二个PUSH，压入ebp，显然这个ebp的值可以在main函数里面看到，</span></span><br><span class="line"><span class="comment">//有两条：</span></span><br><span class="line"><span class="comment">//## 00F11401  mov   ebp,esp </span></span><br><span class="line"><span class="comment">//## 00F11403  sub   esp,0C0h </span></span><br><span class="line"><span class="comment">//那么ebp就是main的栈底</span></span><br><span class="line"></span><br><span class="line"><span class="number">00F</span>113D1  mov         ebp,esp  </span><br><span class="line"><span class="number">00F</span>113D3  sub         esp,<span class="number">0</span>CCh  </span><br><span class="line"><span class="number">00F</span>113D9  push        ebx  </span><br><span class="line"><span class="number">00F</span>113DA  push        esi  </span><br><span class="line"><span class="number">00F</span>113DB  push        edi  </span><br><span class="line"><span class="number">00F</span>113DC  lea         edi,[ebp+FFFFFF34h]  </span><br><span class="line"><span class="number">00F</span>113E2  mov         ecx,<span class="number">33</span>h  </span><br><span class="line"><span class="number">00F</span>113E7  mov         eax,<span class="number">0</span>CCCCCCCCh  </span><br><span class="line"><span class="number">00F</span>113EC  rep stos    dword ptr es:[edi]  </span><br><span class="line">	<span class="keyword">int</span> c;</span><br><span class="line">	c=a+b;</span><br><span class="line"><span class="number">00F</span>113EE  movsx       eax,byte ptr [ebp+<span class="number">0</span>Ch]  </span><br><span class="line"><span class="number">00F</span>113F2  add         eax,dword ptr [ebp+<span class="number">8</span>]  </span><br><span class="line"><span class="number">00F</span>113F5  mov         dword ptr [ebp<span class="number">-8</span>],eax  </span><br><span class="line">&#125;</span><br><span class="line"><span class="number">00F</span>113F8  pop         edi  </span><br><span class="line"><span class="number">00F</span>113F9  pop         esi  </span><br><span class="line"><span class="number">00F</span>113FA  pop         ebx  </span><br><span class="line"><span class="number">00F</span>113FB  mov         esp,ebp  </span><br><span class="line"><span class="number">00F</span>113FD  pop         ebp  </span><br><span class="line"><span class="number">00F</span>113FE  ret</span><br></pre></td></tr></table></figure>
+<p>调用发生时，压入两个参数后，必须再保存下一条指令的位置，因此有一个压栈操作，这个操作是有call指令来完成的。 其次，func函数将ebp压栈是为了为恢复堆栈做准备。因为CPU只有两个寄存器用于堆栈操作：SS:SP，为了调用func函数完成时能进入main的堆栈，必须先保存(push ebp)再恢复(pop ebp),这一点从func函数末尾也看得出。</p>
+<p>此外，更直观一点，从内存中看得出：第二个push 00ddf794和func的stack靠的很近:</p>
+<p><img src="124842_QbXs_580940.png" alt=""></p>
+<p>恰好是指向了main的栈底。</p>
+<p>再来看看func里面:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> c;</span><br><span class="line">	c=a+b;</span><br><span class="line"><span class="number">00F</span>113EE  movsx       eax,byte ptr [ebp+<span class="number">0</span>Ch]  </span><br><span class="line"><span class="number">00F</span>113F2  add         eax,dword ptr [ebp+<span class="number">8</span>]  </span><br><span class="line"><span class="number">00F</span>113F5  mov         dword ptr [ebp<span class="number">-8</span>],eax  </span><br><span class="line"></span><br><span class="line"><span class="comment">//经过分析可以知道：</span></span><br><span class="line"><span class="comment">//&amp;b = ebp+0ch</span></span><br><span class="line"><span class="comment">//&amp;a = ebp+8</span></span><br><span class="line"><span class="comment">//&amp;c = ebp-8</span></span><br><span class="line"><span class="comment">//在上面的分析中我们知道这个ebp是指向栈底的，局部变量c在栈内，参数a 和 b 是之前push进来的</span></span><br></pre></td></tr></table></figure>
+<p>经过上述分析，可以得出一些结论：</p>
+<p>有参函数调用发生时：</p>
+<p>1.先将参数从右向左依次压栈<br>2.将下一条指令的地址压栈<br>3.被调函数将主调函数的栈底位置压栈<br>4.被调函数初始化自己的栈<br>5.取出参数进行运算(并不是pop)<br>6.恢复栈指针<br>7.执行ret恢复(pop)ip，此时程序转到call的下一条add esp<br>8.向下移动栈顶指针sp，所谓的释放局部变量。</p>
+<p>可以看到局部变量的”释放”其实是在主调函数中完成的，而不是在被调用函数末尾。</p>
+<p>“释放”不是清除内存，而是修改栈指针使局部变量不能访问。</p>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://apporz.com/2013/07/26/cpp-function-call-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Micooz Lee">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/master.portrait.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Micooz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2013/07/26/cpp-function-call-1/" itemprop="url">
+                  【汇编】C++ 函数调用之——局部变量
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+                
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-26T00:00:01+08:00">2013-07-26</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/07/26/cpp-function-call-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/26/cpp-function-call-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我们知道，栈作为一种数据结构，是一种只能在一端进行插入和删除操作的特殊线性表。它按照后进先出的原则存储数据，先进入的数据被压入栈底，最后的数据在栈顶，需要读数据的时候从栈顶开始弹出数据（最后一个数据被第一个读出来）。</p><p>C++函数内的参数和局部变量都是存放在栈空间内，那么具体是如何存放和利用的呢？让我们来一探究竟。</p><p>有如下测试代码：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">	<span class="keyword">char</span> b;</span><br><span class="line">	<span class="keyword">double</span> c;</span><br><span class="line"></span><br><span class="line">	a=<span class="number">97</span>;</span><br><span class="line">	b=a;</span><br><span class="line">	c=<span class="number">7.2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//call func</span></span><br><span class="line">	func();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>func函数内有三个类型不相同的变量a,b,c 然后对a,b,c分别赋值。<br>对应的汇编码大致如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="number">00B</span>013D0  push        ebp  </span><br><span class="line"><span class="number">00B</span>013D1  mov         ebp,esp  </span><br><span class="line"><span class="number">00B</span>013D3  sub         esp,<span class="number">0E8</span>h  </span><br><span class="line"><span class="number">00B</span>013D9  push        ebx  </span><br><span class="line"><span class="number">00B</span>013DA  push        esi  </span><br><span class="line"><span class="number">00B</span>013DB  push        edi  </span><br><span class="line"><span class="number">00B</span>013DC  lea         edi,[ebp+FFFFFF18h]  </span><br><span class="line"><span class="number">00B</span>013E2  mov         ecx,<span class="number">3</span>Ah  </span><br><span class="line"><span class="number">00B</span>013E7  mov         eax,<span class="number">0</span>CCCCCCCCh  </span><br><span class="line"><span class="number">00B</span>013EC  rep stos    dword ptr es:[edi]  </span><br><span class="line"><span class="comment">//上面的指令意思同样是分配栈空间，只不过大小变成了3A*4=E8(232)字节</span></span><br><span class="line"><span class="comment">//如果没有这三个局部变量和参数，那么分配的空间应该是192字节，232-192=40，</span></span><br><span class="line"><span class="comment">//也就是说多分配了40字节</span></span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">	<span class="keyword">char</span> b;</span><br><span class="line">	<span class="keyword">double</span> c;</span><br><span class="line"><span class="comment">//a,b,c在栈中的位置如下图所示，从汇编也可以看到：</span></span><br><span class="line"><span class="comment">//&amp;a = ebp-8h</span></span><br><span class="line"><span class="comment">//&amp;b = ebp-11h</span></span><br><span class="line"><span class="comment">//&amp;c = ebp-24h</span></span><br><span class="line"><span class="comment">//好像并不是想像中的那样相邻存放的，但是依然符合栈的存放特点：从高地址往低地址</span></span><br><span class="line">	a=<span class="number">97</span>;</span><br><span class="line"><span class="number">00B</span>013EE  mov         dword ptr [ebp<span class="number">-8</span>],<span class="number">61</span>h  </span><br><span class="line">	b=a;</span><br><span class="line"><span class="number">00B</span>013F5  mov         al,byte ptr [ebp<span class="number">-8</span>]  </span><br><span class="line"><span class="number">00B</span>013F8  mov         byte ptr [ebp<span class="number">-11</span>h],al  </span><br><span class="line">	c=<span class="number">7.2</span>;</span><br><span class="line"><span class="comment">//这里存7.2的时候是从前面某个内存区域通过双字传送指令实现的，</span></span><br><span class="line"><span class="comment">//C语言中7.2默认是double(64位8字节)是一个32位寄存器存放不了的，</span></span><br><span class="line"><span class="comment">//因此需要在编译期先放到内存里面，然后拷贝到栈内</span></span><br><span class="line"><span class="number">00B</span>013FB  movsd       xmm0,mmword ptr ds:[<span class="number">00B</span>058A8h]  </span><br><span class="line"><span class="number">00B</span>01403  movsd       mmword ptr [ebp<span class="number">-24</span>h],xmm0  </span><br><span class="line">&#125;</span><br><span class="line"><span class="number">00B</span>01408  pop         edi  </span><br><span class="line"><span class="number">00B</span>01409  pop         esi  </span><br><span class="line"><span class="number">00B</span>0140A  pop         ebx  </span><br><span class="line"><span class="number">00B</span>0140B  mov         esp,ebp  </span><br><span class="line"><span class="number">00B</span>0140D  pop         ebp  </span><br><span class="line"><span class="number">00B</span>0140E  ret  </span><br><span class="line">--- 无源文件 -----------------------------------------------------------------------</span><br><span class="line"><span class="number">00B</span>0140F  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01410  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01411  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01412  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01413  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01414  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01415  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01416  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01417  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01418  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01419  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>0141A  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>0141B  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>0141C  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>0141D  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>0141E  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>0141F  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01420  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01421  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01422  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01423  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01424  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01425  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01426  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01427  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01428  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>01429  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>0142A  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>0142B  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>0142C  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>0142D  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>0142E  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">00B</span>0142F  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line">--- f:\cpp\clr\consoleapplication1\源.cpp ---------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="number">00B</span>01430  push        ebp  </span><br><span class="line"><span class="number">00B</span>01431  mov         ebp,esp  </span><br><span class="line"><span class="number">00B</span>01433  sub         esp,<span class="number">0</span>C0h  </span><br><span class="line"><span class="number">00B</span>01439  push        ebx  </span><br><span class="line"><span class="number">00B</span>0143A  push        esi  </span><br><span class="line"><span class="number">00B</span>0143B  push        edi  </span><br><span class="line"><span class="number">00B</span>0143C  lea         edi,[ebp+FFFFFF40h]  </span><br><span class="line"><span class="number">00B</span>01442  mov         ecx,<span class="number">30</span>h  </span><br><span class="line"><span class="number">00B</span>01447  mov         eax,<span class="number">0</span>CCCCCCCCh  </span><br><span class="line"><span class="number">00B</span>0144C  rep stos    dword ptr es:[edi]  </span><br><span class="line">	<span class="comment">//call func</span></span><br><span class="line">	func();</span><br><span class="line"><span class="number">00B</span>0144E  call        <span class="number">00B</span>01082  </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">00B</span>01453  xor         eax,eax  </span><br><span class="line">&#125;</span><br><span class="line"><span class="number">00B</span>01455  pop         edi  </span><br><span class="line"><span class="number">00B</span>01456  pop         esi  </span><br><span class="line"><span class="number">00B</span>01457  pop         ebx  </span><br><span class="line"><span class="number">00B</span>01458  add         esp,<span class="number">0</span>C0h  </span><br><span class="line"><span class="number">00B</span>0145E  cmp         ebp,esp  </span><br><span class="line"><span class="number">00B</span>01460  call        <span class="number">00B</span>01140  </span><br><span class="line"><span class="number">00B</span>01465  mov         esp,ebp  </span><br><span class="line"><span class="number">00B</span>01467  pop         ebp  </span><br><span class="line"><span class="number">00B</span>01468  ret</span><br></pre></td></tr></table></figure>
+<p>func函数栈区内存分布：</p>
+<p>其中红框部分是变量a被赋值之前，</p>
+<p><img src="102143_ydP4_580940.png" alt=""></p>
+<p>现在a被赋值为十进制的97，换成16进制就是 0x0000 0061，和下图一致，注意存放规则！</p>
+<p>高八位存0000，低八位存0061</p>
+<p><img src="102259_e2wS_580940.png" alt=""></p>
+<p>现在a,b,c都被赋值：</p>
+<p>可以看到占用情况：</p>
+<p>a是int 占4字节；b是char占1字节；c是double占8字节；且a,b,c并未连续存放</p>
+<p><img src="102130_9DLL_580940.png" alt=""></p>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -314,11 +862,20 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2013/07/25/cpp-function-call-0/" itemprop="url">【汇编】C++ 函数调用分析之——无参调用。</a></h1>
+                <a class="post-title-link" href="/2013/07/25/cpp-function-call-0/" itemprop="url">
+                  【汇编】C++ 函数调用分析之——无参调用。
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+                
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -326,11 +883,10 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-25T00:00:00+08:00">
-                2013-07-25
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-25T00:00:00+08:00">2013-07-25</time>
             
 
+            
             
 
             
@@ -346,8 +902,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2013/07/25/cpp-function-call-0/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2013/07/25/cpp-function-call-0/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/25/cpp-function-call-0/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -377,20 +932,19 @@
       
         
           
-            <p>由于C++函数调用多种多样，本文将分几个章节分别讲解。</p>
-<p>首先来最简单的一个无参数调用。</p>
-<p>有如下测试代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//do nothing here</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//call func</span></span><br><span class="line">	func();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>由于C++函数调用多种多样，本文将分几个章节分别讲解。</p><p>首先来最简单的一个无参数调用。</p><p>有如下测试代码：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//do nothing here</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//call func</span></span><br><span class="line">	func();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在主函数中调用自定义func函数。</p>
 <p>再看看两个函数的汇编码：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//显然和之前讲过的main的实现雷同，挖一个192字节栈空间，然后填int 3中断(清cc)</span></span><br><span class="line"><span class="number">002F</span>13A0  push        ebp  </span><br><span class="line"><span class="number">002F</span>13A1  mov         ebp,esp  </span><br><span class="line"><span class="number">002F</span>13A3  sub         esp,<span class="number">0</span>C0h  </span><br><span class="line"><span class="number">002F</span>13A9  push        ebx  </span><br><span class="line"><span class="number">002F</span>13AA  push        esi  </span><br><span class="line"><span class="number">002F</span>13AB  push        edi  </span><br><span class="line"><span class="number">002F</span>13AC  lea         edi,[ebp+FFFFFF40h]  </span><br><span class="line"><span class="number">002F</span>13B2  mov         ecx,<span class="number">30</span>h  </span><br><span class="line"><span class="number">002F</span>13B7  mov         eax,<span class="number">0</span>CCCCCCCCh  </span><br><span class="line"><span class="number">002F</span>13BC  rep stos    dword ptr es:[edi]  </span><br><span class="line">	<span class="comment">//do nothing here</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="number">002F</span>13BE  pop         edi  </span><br><span class="line"><span class="number">002F</span>13BF  pop         esi  </span><br><span class="line"><span class="number">002F</span>13C0  pop         ebx  </span><br><span class="line"><span class="number">002F</span>13C1  mov         esp,ebp  </span><br><span class="line"><span class="number">002F</span>13C3  pop         ebp  </span><br><span class="line"><span class="number">002F</span>13C4  ret  </span><br><span class="line">--- 无源文件 -----------------------------------------------------------------------</span><br><span class="line"><span class="number">002F</span>13C5  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">002F</span>13C6  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">002F</span>13C7  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">002F</span>13C8  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">002F</span>13C9  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">002F</span>13CA  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">002F</span>13CB  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">002F</span>13CC  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">002F</span>13CD  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">002F</span>13CE  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line"><span class="number">002F</span>13CF  <span class="keyword">int</span>         <span class="number">3</span>  </span><br><span class="line">--- f:\cpp\clr\consoleapplication1\源.cpp ---------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="number">002F</span>13D0  push        ebp  </span><br><span class="line"><span class="number">002F</span>13D1  mov         ebp,esp  </span><br><span class="line"><span class="number">002F</span>13D3  sub         esp,<span class="number">0</span>C0h  </span><br><span class="line"><span class="number">002F</span>13D9  push        ebx  </span><br><span class="line"><span class="number">002F</span>13DA  push        esi  </span><br><span class="line"><span class="number">002F</span>13DB  push        edi  </span><br><span class="line"><span class="number">002F</span>13DC  lea         edi,[ebp+FFFFFF40h]  </span><br><span class="line"><span class="number">002F</span>13E2  mov         ecx,<span class="number">30</span>h  </span><br><span class="line"><span class="number">002F</span>13E7  mov         eax,<span class="number">0</span>CCCCCCCCh  </span><br><span class="line"><span class="number">002F</span>13EC  rep stos    dword ptr es:[edi]  </span><br><span class="line">	<span class="comment">//call func</span></span><br><span class="line">	func();</span><br><span class="line"><span class="comment">//这里就编译出一条指令 call 002F11D1 这个地址是什么呢，在上面比较远的地方，为了简化，我只取一部分汇编码：</span></span><br><span class="line">##################################</span><br><span class="line">_GetLastError@<span class="number">0</span>:</span><br><span class="line"><span class="number">002F</span>11BD  jmp         <span class="number">002F</span>3972  </span><br><span class="line">_RTC_GetErrorFunc:</span><br><span class="line"><span class="number">002F</span>11C2  jmp         <span class="number">002F</span>1980  </span><br><span class="line">_wcscpy_s:</span><br><span class="line"><span class="number">002F</span>11C7  jmp         <span class="number">002F</span>391E  </span><br><span class="line">@_RTC_AllocaHelper@<span class="number">12</span>:</span><br><span class="line"><span class="number">002F</span>11CC  jmp         <span class="number">002F</span>1410  </span><br><span class="line">func:</span><br><span class="line"><span class="number">002F</span>11D1  jmp         <span class="number">002F</span>13A0  ###<span class="number">002F</span>11D1在这里</span><br><span class="line">@_RTC_CheckStackVars@<span class="number">8</span>:</span><br><span class="line"><span class="number">002F</span>11D6  jmp         <span class="number">002F</span>1820  </span><br><span class="line">@_RTC_CheckStackVars2@<span class="number">12</span>:</span><br><span class="line"><span class="number">002F</span>11DB  jmp         <span class="number">002F</span>39D0  </span><br><span class="line">__RTC_CheckEsp:</span><br><span class="line">##################################</span><br><span class="line"><span class="comment">//显然上面call的是一个跳转表里面的func的调转地址，而不是直接call 002F13A0(真正地址)</span></span><br><span class="line"></span><br><span class="line"><span class="number">002F</span>13EE  call        <span class="number">002F</span>11D1  </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">002F</span>13F3  xor         eax,eax  </span><br><span class="line">&#125;</span><br><span class="line"><span class="number">002F</span>13F5  pop         edi  </span><br><span class="line"><span class="number">002F</span>13F6  pop         esi  </span><br><span class="line"><span class="number">002F</span>13F7  pop         ebx  </span><br><span class="line"><span class="number">002F</span>13F8  add         esp,<span class="number">0</span>C0h  </span><br><span class="line"><span class="number">002F</span>13FE  cmp         ebp,esp  </span><br><span class="line"><span class="number">002F</span>1400  call        <span class="number">002F</span>11E0  </span><br><span class="line"><span class="number">002F</span>1405  mov         esp,ebp  </span><br><span class="line"><span class="number">002F</span>1407  pop         ebp  </span><br><span class="line"><span class="number">002F</span>1408  ret</span><br></pre></td></tr></table></figure>
 <p>C++编译时，把函数地址放到一个跳转表里面，调用函数时，去找跳转表对应函数地址，然后再jmp一次。</p>
 <p>可以看到，调用函数需要跳两次，同时，会产生许多指令进行栈操作，不管怎样，调用一个函数必须付出192字节(本例中)代价，不管你有没有使用局部变量。所以尽量避免调用过多无意义的函数。</p>
-
           
         
       
     </div>
+
+    
+
     
     
     
@@ -427,6 +981,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -453,11 +1009,20 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2013/07/25/cpp-main-asm/" itemprop="url">【汇编】C++ Win32ConsoleApp main函数的构造分析</a></h1>
+                <a class="post-title-link" href="/2013/07/25/cpp-main-asm/" itemprop="url">
+                  【汇编】C++ Win32ConsoleApp main函数的构造分析
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+                
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -465,11 +1030,10 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-25T00:00:00+08:00">
-                2013-07-25
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-25T00:00:00+08:00">2013-07-25</time>
             
 
+            
             
 
             
@@ -485,8 +1049,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2013/07/25/cpp-main-asm/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2013/07/25/cpp-main-asm/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/25/cpp-main-asm/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -516,8 +1079,7 @@
       
         
           
-            <p>C++控制台标准main函数的固定格式如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>C++控制台标准main函数的固定格式如下：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>有两个参数：</p>
 <p>1.argc 整形 记录参数个数(包括路径)<br>2.argv 字符双指针或者叫字符串数组 记录各个参数(包括路径全名)</p>
 <p>假设使用下面的命令启动上述代码产生的可执行文件A.exe：</p>
@@ -531,11 +1093,13 @@
 <p><img src="215454_dxuD_580940.png" alt=""></p>
 <p>这里可以看到系统调用main函数，函数先申请栈空间，只有192字节，然后将这192字节全部初始化为cc，所以但我们 int a; 之后，这个a就是0xcccc cccc，char b; 这个b就是0xcc(换成ascii码就是一个英文问号?) 所以新手没有对变量初始化打印出来就是所谓的乱码~~~</p>
 <p>这里由于没有使用参数的原因，所以看不到对参数的操作。</p>
-
           
         
       
     </div>
+
+    
+
     
     
     
@@ -574,6 +1138,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -598,11 +1164,20 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2013/07/24/cpp-condition-statement-asm/" itemprop="url">【汇编】C++条件控制语句分析</a></h1>
+                <a class="post-title-link" href="/2013/07/24/cpp-condition-statement-asm/" itemprop="url">
+                  【汇编】C++条件控制语句分析
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+                
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -610,11 +1185,10 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-24T00:00:00+08:00">
-                2013-07-24
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-24T00:00:00+08:00">2013-07-24</time>
             
 
+            
             
 
             
@@ -630,8 +1204,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2013/07/24/cpp-condition-statement-asm/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2013/07/24/cpp-condition-statement-asm/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/24/cpp-condition-statement-asm/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -661,19 +1234,7 @@
       
         
           
-            <p>【测试环境】：Visual Studio Ultimate 2012 (V110) </p>
-<p>C++中条件控制语句主要分3种： </p>
-<p><strong>一、单条件结构</strong></p>
-<p>if(condition)<br>    {statements} </p>
-<p><strong>二、带else条件结构</strong></p>
-<p>if(condition)<br>    {statements}<br>else<br>    {statements} </p>
-<p><strong>三、多条件结构</strong></p>
-<p>if(condition1)<br>    {statements1}<br>else if(condition2)<br>    {statements2}<br>…<br>else<br>    {statements last} </p>
-<p>本文将对这三类结构进行汇编分析，看看编译器对其的底层实现。帮助我们更好得了解高级编译性语言的实现过程。 </p>
-<p>另外，文末将对简化的条件控制结构——三目运算进行汇编实现分析。 </p>
-<p>首先不妨看看对空statement编译器是如何处理的？ </p>
-<p>有如下代码段：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> test;</span><br><span class="line">    test=<span class="number">0</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span>(test)</span><br><span class="line">        ;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>【测试环境】：Visual Studio Ultimate 2012 (V110)</p><p>C++中条件控制语句主要分3种：</p><p><strong>一、单条件结构</strong></p><p>if(condition)<br>{statements}</p><p><strong>二、带else条件结构</strong></p><p>if(condition)<br>{statements}<br>else<br>{statements}</p><p><strong>三、多条件结构</strong></p><p>if(condition1)<br>{statements1}<br>else if(condition2)<br>{statements2}<br>…<br>else<br>{statements last}</p><p>本文将对这三类结构进行汇编分析，看看编译器对其的底层实现。帮助我们更好得了解高级编译性语言的实现过程。</p><p>另外，文末将对简化的条件控制结构——三目运算进行汇编实现分析。</p><p>首先不妨看看对空statement编译器是如何处理的？</p><p>有如下代码段：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> test;</span><br><span class="line">    test=<span class="number">0</span>;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span>(test)</span><br><span class="line">        ;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>编译上述代码，将得到一条警告消息： </p>
 <p>警告1warning C4390: “;”: 找到空的受控语句；这是否是有意的? </p>
 <p>忽略警告调试程序，将得到下面的汇编码，这里只取{}内的汇编码：</p>
@@ -709,11 +1270,13 @@
 <p>对应的汇编代码如下： </p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">int</span> test=<span class="number">10</span>;</span><br><span class="line"><span class="number">00B</span>E17CE  mov         dword ptr [ebp<span class="number">-8</span>],<span class="number">0</span>Ah </span><br><span class="line">     </span><br><span class="line">    (test==<span class="number">20</span>)?<span class="number">1</span>:<span class="number">0</span>;</span><br><span class="line"><span class="comment">//比较是不是20</span></span><br><span class="line"><span class="number">00B</span>E17D5  cmp         dword ptr [ebp<span class="number">-8</span>],<span class="number">14</span>h </span><br><span class="line"><span class="comment">//不成立则跳到冒号后的语句</span></span><br><span class="line"><span class="number">00B</span>E17D9  jne         <span class="number">00B</span>E17E7 </span><br><span class="line"><span class="comment">//成立则执行问号后的语句</span></span><br><span class="line"><span class="comment">//这里把表达式返回值放进栈空间[ebp-208]</span></span><br><span class="line"><span class="number">00B</span>E17DB  mov         dword ptr [ebp+FFFFFF30h],<span class="number">1</span> </span><br><span class="line"><span class="comment">//跳出表达式</span></span><br><span class="line"><span class="number">00B</span>E17E5  jmp         <span class="number">00B</span>E17F1 </span><br><span class="line"><span class="number">00B</span>E17E7  mov         dword ptr [ebp+FFFFFF30h],<span class="number">0</span> </span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">00B</span>E17F1  xor         eax,eax</span><br></pre></td></tr></table></figure>
 <p>与第二类if结构比较，三目运算则显得更紧凑，逻辑性更强些。语法规则也很简单。</p>
-
           
         
       
     </div>
+
+    
+
     
     
     
@@ -752,6 +1315,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -776,11 +1341,20 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2013/07/24/cpp-loop-statement-asm/" itemprop="url">【汇编】C++ 循环语句分析</a></h1>
+                <a class="post-title-link" href="/2013/07/24/cpp-loop-statement-asm/" itemprop="url">
+                  【汇编】C++ 循环语句分析
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+            
+                
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -788,11 +1362,10 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-24T00:00:00+08:00">
-                2013-07-24
-              </time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-24T00:00:00+08:00">2013-07-24</time>
             
 
+            
             
 
             
@@ -808,8 +1381,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2013/07/24/cpp-loop-statement-asm/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2013/07/24/cpp-loop-statement-asm/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/24/cpp-loop-statement-asm/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -839,19 +1411,7 @@
       
         
           
-            <p>测试环境Visual Studio Ultimate 2012 (v110) </p>
-<p>C++有三种循环控制语句：</p>
-<p><strong>一.for循环</strong></p>
-<p>for(initialization;condition;increase){<br>    statements;<br>}</p>
-<p><strong>二.while循环</strong></p>
-<p>while (expression){<br>    statements;<br>}</p>
-<p><strong>三.do-while循环</strong></p>
-<p>do<br>{statements;}<br> while (condition);</p>
-<p>本文将分别利用反汇编分析上述三种循环的底层实现，帮助我们更好的了解循环机制。</p>
-<p><strong>一.for循环</strong></p>
-<p>for(initialization;condition;increase){<br>    statements;<br>}</p>
-<p>有如下测试代码段:</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">"\n"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>测试环境Visual Studio Ultimate 2012 (v110)</p><p>C++有三种循环控制语句：</p><p><strong>一.for循环</strong></p><p>for(initialization;condition;increase){<br>statements;<br>}</p><p><strong>二.while循环</strong></p><p>while (expression){<br>statements;<br>}</p><p><strong>三.do-while循环</strong></p><p>do<br>{statements;}<br>while (condition);</p><p>本文将分别利用反汇编分析上述三种循环的底层实现，帮助我们更好的了解循环机制。</p><p><strong>一.for循环</strong></p><p>for(initialization;condition;increase){<br>statements;<br>}</p><p>有如下测试代码段:</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">"\n"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>该代码将在控制台输出0-99。 </p>
 <p>Debug运行查看反汇编码大致如下： </p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;++i)</span><br><span class="line"><span class="comment">//容易看到内存单元[ebp-8]就是循环变量i的位置，首先将它初始化清0</span></span><br><span class="line"><span class="number">00B</span>54F2E  mov         dword ptr [ebp<span class="number">-8</span>],<span class="number">0</span>  </span><br><span class="line"><span class="comment">//这里跳转至下面cmp指令</span></span><br><span class="line"><span class="number">00B</span>54F35  jmp         main+<span class="number">30</span>h (<span class="number">0B</span>54F40h)  </span><br><span class="line"><span class="comment">//将i放入eax暂存，然后自加1，然后再放回i里面，就是实现i++</span></span><br><span class="line"><span class="comment">//内存单元不能直接进行这样的操作：add dword ptr [ebp-8],1</span></span><br><span class="line"><span class="number">00B</span>54F37  mov         eax,dword ptr [ebp<span class="number">-8</span>]  </span><br><span class="line"><span class="number">00B</span>54F3A  add         eax,<span class="number">1</span>  </span><br><span class="line"><span class="number">00B</span>54F3D  mov         dword ptr [ebp<span class="number">-8</span>],eax  </span><br><span class="line"><span class="comment">//验证i是不是==64h(100)了</span></span><br><span class="line"><span class="number">00B</span>54F40  cmp         dword ptr [ebp<span class="number">-8</span>],<span class="number">64</span>h  </span><br><span class="line"><span class="comment">//条件一旦成立，也就是i==100的时候，结束循环</span></span><br><span class="line"><span class="number">00B</span>54F44  jge         main+<span class="number">5F</span>h (<span class="number">0B</span>54F6Fh)  </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">//打印的实现不是本文的主题，所以略去</span></span><br><span class="line"><span class="number">00B</span>54F46  push        <span class="number">0B</span>5CC74h  </span><br><span class="line"><span class="number">00B</span>54F4B  mov         esi,esp  </span><br><span class="line"><span class="number">00B</span>54F4D  mov         eax,dword ptr [ebp<span class="number">-8</span>]  </span><br><span class="line"><span class="number">00B</span>54F50  push        eax  </span><br><span class="line"><span class="number">00B</span>54F51  mov         ecx,dword ptr ds:[<span class="number">0B</span>60310h]  </span><br><span class="line"><span class="number">00B</span>54F57  call        dword ptr ds:[<span class="number">0B</span>60318h]  </span><br><span class="line"><span class="number">00B</span>54F5D  cmp         esi,esp  </span><br><span class="line"><span class="number">00B</span>54F5F  call        __RTC_CheckEsp (<span class="number">0B</span>51325h)  </span><br><span class="line"><span class="number">00B</span>54F64  push        eax  </span><br><span class="line"><span class="number">00B</span>54F65  call        <span class="built_in">std</span>::<span class="keyword">operator</span>&lt;&lt;&lt;<span class="built_in">std</span>::char_traits&lt;<span class="keyword">char</span>&gt; &gt; (<span class="number">0B</span>512A3h)  </span><br><span class="line"><span class="number">00B</span>54F6A  add         esp,<span class="number">8</span>  </span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//这里的&#125;是for的结束位置，编译为一个jmp无条件跳转指令，跳到i++那里，</span></span><br><span class="line"><span class="comment">//这样就实现了循环</span></span><br><span class="line"><span class="number">00B</span>54F6D  jmp         main+<span class="number">27</span>h (<span class="number">0B</span>54F37h)  </span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"><span class="number">00B</span>54F6F  xor         eax,eax</span><br></pre></td></tr></table></figure>
@@ -889,11 +1449,13 @@
 <p>此外，这里讨论了前减和后减的区别:</p>
 <p>后减会产生一个临时变量，并对这个临时变量进行条件判断。前减不会产生临时变量，是对变量本身进行条件判断。</p>
 <p>好了，本文到此结束，如有任何疑惑或者说的不恰当的地方还请大家批评指正。</p>
-
           
         
       
     </div>
+
+    
+
     
     
     
@@ -928,15 +1490,12 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -963,41 +1522,75 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/uploads/master.portrait.png"
-                alt="Micooz Lee" />
+              <img class="site-author-image" itemprop="image" src="/uploads/master.portrait.png" alt="Micooz Lee">
             
               <p class="site-author-name" itemprop="name">Micooz Lee</p>
               <p class="site-description motion-element" itemprop="description">FullStack JavaScript Engineer</p>
           </div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
+          
+            <nav class="site-state motion-element">
               
-                <a href="/archives/">
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">44</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
 
-            
-
-            
               
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">tags</span>
-                </a>
-              </div>
-            
 
-          </nav>
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
@@ -1008,44 +1601,40 @@
             </div>
           
 
-          <div class="links-of-author motion-element">
-            
+          
+            <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/micooz" target="_blank" title="GitHub">
-                    
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/micooz" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="mailto:micooz@hotmail.com" target="_blank" title="E-Mail">
-                    
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  <a href="mailto:micooz@hotmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="https://twitter.com/MicoozLee" target="_blank" title="Twitter">
-                    
-                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  <a href="https://twitter.com/MicoozLee" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="https://instagram.com/micoozlee" target="_blank" title="Instagram">
-                    
-                      <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  <a href="https://instagram.com/micoozlee" target="_blank" title="Instagram"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  
                 </span>
               
-            
-          </div>
+            </div>
+          
 
           
           
 
           
           
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
               <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-globe"></i>
+                <i class="fa fa-fw fa-link"></i>
                 Links
               </div>
               <ul class="links-of-blogroll-list">
@@ -1095,6 +1684,9 @@
           
 
           
+            
+          
+          
 
         </div>
       </section>
@@ -1113,30 +1705,9 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Micooz Lee</span>
-
-  
-</div>
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
-
-
-
-
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span> <span class="with-love" id="animate"><i class="fa fa-user"></i> </span><span class="author" itemprop="copyrightHolder">Micooz Lee</span></div><div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div><span class="post-meta-divider">|</span><div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.1.0</div>
         
+
 
 
 
@@ -1157,15 +1728,30 @@
       </div>
     
 
+    
+
   </div>
 
   
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+<script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1176,43 +1762,27 @@
 
 
   
-
-
-
-
-
-
-
-
-
-
-
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
 
   
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
   
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
   
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
 
 
 
@@ -1220,9 +1790,9 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/affix.js?v=6.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.1.0"></script>
 
 
 
@@ -1231,22 +1801,18 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
 
 
 
   
 
+  
+    <script id="dsq-count-scr" src="https://micooz.disqus.com/count.js" async></script>
+  
 
   
 
-    
-      <script id="dsq-count-scr" src="https://micooz.disqus.com/count.js" async></script>
-    
-
-    
-
-  
 
 
 
@@ -1268,324 +1834,11 @@
 
 
 
+
+
   
 
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
+  <script type="text/javascript">function proceedsearch(){$("body").append('<div class="search-popup-overlay local-search-pop-overlay"></div>').css("overflow","hidden"),$(".search-popup-overlay").click(onPopupClose),$(".popup").toggle();var t=$("#local-search-input");t.attr("autocapitalize","none"),t.attr("autocorrect","off"),t.focus()}var isfetched=!1,isXml=!0,search_path="search.xml";0===search_path.length?search_path="search.xml":/json$/i.test(search_path)&&(isXml=!1);var path="/"+search_path,onPopupClose=function(t){$(".popup").hide(),$("#local-search-input").val(""),$(".search-result-list").remove(),$("#no-result").remove(),$(".local-search-pop-overlay").remove(),$("body").css("overflow","")},searchFunc=function(t,e,o){"use strict";$("body").append('<div class="search-popup-overlay local-search-pop-overlay"><div id="search-loading-icon"><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div></div>').css("overflow","hidden"),$("#search-loading-icon").css("margin","20% auto 0 auto").css("text-align","center"),$.ajax({url:t,dataType:isXml?"xml":"json",async:!0,success:function(t){isfetched=!0,$(".popup").detach().appendTo(".header-inner");var n=isXml?$("entry",t).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get():t,r=document.getElementById(e),s=document.getElementById(o),a=function(){var t=r.value.trim().toLowerCase(),e=t.split(/[\s\-]+/);e.length>1&&e.push(t);var o=[];if(t.length>0&&n.forEach(function(n){var r=!1,s=0,a=0,i=n.title.trim(),c=i.toLowerCase(),l=n.content.trim().replace(/<[^>]+>/g,""),h=l.toLowerCase(),p=decodeURIComponent(n.url),u=[],f=[];if(""!=i&&(e.forEach(function(t){function e(t,e,o){var n=t.length;if(0===n)return[];var r=0,s=[],a=[];for(o||(e=e.toLowerCase(),t=t.toLowerCase());(s=e.indexOf(t,r))>-1;)a.push({position:s,word:t}),r=s+n;return a}u=u.concat(e(t,c,!1)),f=f.concat(e(t,h,!1))}),(u.length>0||f.length>0)&&(r=!0,s=u.length+f.length)),r){[u,f].forEach(function(t){t.sort(function(t,e){return e.position!==t.position?e.position-t.position:t.word.length-e.word.length})});function d(e,o,n,r){for(var s=r[r.length-1],i=s.position,c=s.word,l=[],h=0;i+c.length<=n&&0!=r.length;){c===t&&h++,l.push({position:i,length:c.length});var p=i+c.length;for(r.pop();0!=r.length&&(s=r[r.length-1],i=s.position,c=s.word,p>i);)r.pop()}return a+=h,{hits:l,start:o,end:n,searchTextCount:h}}var g=[];0!=u.length&&g.push(d(0,0,i.length,u));for(var v=[];0!=f.length;){var $=f[f.length-1],C=$.position,m=$.word,x=C-20,w=C+80;x<0&&(x=0),w<C+m.length&&(w=C+m.length),w>l.length&&(w=l.length),v.push(d(0,x,w,f))}v.sort(function(t,e){return t.searchTextCount!==e.searchTextCount?e.searchTextCount-t.searchTextCount:t.hits.length!==e.hits.length?e.hits.length-t.hits.length:t.start-e.start});var y=parseInt("1");y>=0&&(v=v.slice(0,y));function T(t,e){var o="",n=e.start;return e.hits.forEach(function(e){o+=t.substring(n,e.position);var r=e.position+e.length;o+='<b class="search-keyword">'+t.substring(e.position,r)+"</b>",n=r}),o+=t.substring(n,e.end)}var b="";0!=g.length?b+="<li><a href='"+p+"' class='search-result-title'>"+T(i,g[0])+"</a>":b+="<li><a href='"+p+"' class='search-result-title'>"+i+"</a>",v.forEach(function(t){b+="<a href='"+p+'\'><p class="search-result">'+T(l,t)+"...</p></a>"}),b+="</li>",o.push({item:b,searchTextCount:a,hitCount:s,id:o.length})}}),1===e.length&&""===e[0])s.innerHTML='<div id="no-result"><i class="fa fa-search fa-5x" /></div>';else if(0===o.length)s.innerHTML='<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>';else{o.sort(function(t,e){return t.searchTextCount!==e.searchTextCount?e.searchTextCount-t.searchTextCount:t.hitCount!==e.hitCount?e.hitCount-t.hitCount:e.id-t.id});var a='<ul class="search-result-list">';o.forEach(function(t){a+=t.item}),a+="</ul>",s.innerHTML=a}};r.addEventListener("input",a),$(".local-search-pop-overlay").remove(),$("body").css("overflow",""),proceedsearch()}})};$(".popup-trigger").click(function(t){t.stopPropagation(),!1===isfetched?searchFunc(path,"local-search-input","local-search-result"):proceedsearch()}),$(".popup-btn-close").click(onPopupClose),$(".popup").click(function(t){t.stopPropagation()}),$(document).on("keyup",function(t){27===t.which&&$(".search-popup").is(":visible")&&onPopupClose()})</script>
 
 
 
@@ -1600,11 +1853,10 @@
   
 
   
-  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
-  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
-
+  
 
   
 
-</body>
-</html>
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.1.0"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.1.0"></script></body></html>
